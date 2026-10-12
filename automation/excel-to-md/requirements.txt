@@ -1,5 +1,0 @@
-flask
-pandas
-tabulate
-openpyxl
-markitdown[all]
