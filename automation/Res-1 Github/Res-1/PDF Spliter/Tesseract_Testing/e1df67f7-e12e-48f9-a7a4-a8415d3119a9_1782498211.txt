@@ -1,0 +1,45 @@
+======================================================================
+  Source file: e1df67f7-e12e-48f9-a7a4-a8415d3119a9_1782498211.pdf
+  Processed : 2026-07-03 18:24:51
+  Documents found: 5
+======================================================================
+
+--- Document 1 (pages: 1) ---
+  Document Number          : 37019
+  Date                     : (not detected)
+  Due Date                 : (not detected)
+  Vendor / Company         : (not detected)
+  Bill To                  : (not detected)
+  Total / Amount Due       : 900.00
+
+--- Document 2 (pages: 2) ---
+  Document Number          : 37690
+  Date                     : (not detected)
+  Due Date                 : (not detected)
+  Vendor / Company         : (not detected)
+  Bill To                  : (not detected)
+  Total / Amount Due       : 550.00
+
+--- Document 3 (pages: 3) ---
+  Document Number          : 37977
+  Date                     : (not detected)
+  Due Date                 : (not detected)
+  Vendor / Company         : (not detected)
+  Bill To                  : (not detected)
+  Total / Amount Due       : (not detected)
+
+--- Document 4 (pages: 4) ---
+  Document Number          : 38041
+  Date                     : (not detected)
+  Due Date                 : (not detected)
+  Vendor / Company         : (not detected)
+  Bill To                  : (not detected)
+  Total / Amount Due       : 550.00
+
+--- Document 5 (pages: 5) ---
+  Document Number          : 37570
+  Date                     : (not detected)
+  Due Date                 : (not detected)
+  Vendor / Company         : (not detected)
+  Bill To                  : (not detected)
+  Total / Amount Due       : (not detected)

@@ -1,0 +1,568 @@
+{
+    "completed_tasks": {
+        "Country Inn & Suites Huntersville::January": {
+            "status": "COMPLETED",
+            "hotel": "Country Inn & Suites Huntersville",
+            "month": "January",
+            "file_path": "\\\\10.0.8.33\\Automation\\Download Data\\Team H\\hellogm\\Country Inn & Suites Huntersville - January_01-31-2026.xlsx",
+            "sheet_stats": {},
+            "timestamp": "2026-09-14 21:20:29"
+        },
+        "Country Inn & Suites Huntersville::February": {
+            "status": "COMPLETED",
+            "hotel": "Country Inn & Suites Huntersville",
+            "month": "February",
+            "file_path": "\\\\10.0.8.33\\Automation\\Download Data\\Team H\\hellogm\\Country Inn & Suites Huntersville - February_02-28-2026.xlsx",
+            "sheet_stats": {},
+            "timestamp": "2026-09-14 21:20:50"
+        },
+        "Country Inn & Suites Huntersville::March": {
+            "status": "COMPLETED",
+            "hotel": "Country Inn & Suites Huntersville",
+            "month": "March",
+            "file_path": "\\\\10.0.8.33\\Automation\\Download Data\\Team H\\hellogm\\Country Inn & Suites Huntersville - March_03-31-2026.xlsx",
+            "sheet_stats": {},
+            "timestamp": "2026-09-14 21:21:12"
+        },
+        "Country Inn & Suites Huntersville::April": {
+            "status": "COMPLETED",
+            "hotel": "Country Inn & Suites Huntersville",
+            "month": "April",
+            "file_path": "\\\\10.0.8.33\\Automation\\Download Data\\Team H\\hellogm\\Country Inn & Suites Huntersville - April_04-30-2026.xlsx",
+            "sheet_stats": {
+                "Lowest Rates": 9
+            },
+            "timestamp": "2026-09-14 21:21:33"
+        },
+        "Country Inn & Suites Huntersville::May": {
+            "status": "COMPLETED",
+            "hotel": "Country Inn & Suites Huntersville",
+            "month": "May",
+            "file_path": "\\\\10.0.8.33\\Automation\\Download Data\\Team H\\hellogm\\Country Inn & Suites Huntersville - May_05-31-2026.xlsx",
+            "sheet_stats": {},
+            "timestamp": "2026-09-14 21:21:53"
+        },
+        "Country Inn & Suites Huntersville::June": {
+            "status": "COMPLETED",
+            "hotel": "Country Inn & Suites Huntersville",
+            "month": "June",
+            "file_path": "\\\\10.0.8.33\\Automation\\Download Data\\Team H\\hellogm\\Country Inn & Suites Huntersville - June_06-30-2026.xlsx",
+            "sheet_stats": {
+                "Lowest Rates": 1
+            },
+            "timestamp": "2026-09-14 21:22:14"
+        },
+        "Country Inn & Suites Huntersville::July": {
+            "status": "COMPLETED",
+            "hotel": "Country Inn & Suites Huntersville",
+            "month": "July",
+            "file_path": "\\\\10.0.8.33\\Automation\\Download Data\\Team H\\hellogm\\Country Inn & Suites Huntersville - July_07-31-2026.xlsx",
+            "sheet_stats": {},
+            "timestamp": "2026-09-14 21:22:35"
+        },
+        "Country Inn & Suites Huntersville::August": {
+            "status": "COMPLETED",
+            "hotel": "Country Inn & Suites Huntersville",
+            "month": "August",
+            "file_path": "\\\\10.0.8.33\\Automation\\Download Data\\Team H\\hellogm\\Country Inn & Suites Huntersville - August_08-31-2026.xlsx",
+            "sheet_stats": {
+                "Lowest Rates": 2,
+                "Comp Room": 9
+            },
+            "timestamp": "2026-09-14 21:22:58"
+        },
+        "Country Inn & Suites Huntersville::September": {
+            "status": "COMPLETED",
+            "hotel": "Country Inn & Suites Huntersville",
+            "month": "September",
+            "file_path": "\\\\10.0.8.33\\Automation\\Download Data\\Team H\\hellogm\\Country Inn & Suites Huntersville - September_09-24-2026.xlsx",
+            "sheet_stats": {
+                "Lowest Rates": 10,
+                "Comp Room": 7,
+                "No Shows": 1
+            },
+            "timestamp": "2026-09-28 18:22:23"
+        },
+        "Extended Stay America - Columbia - West - Stoneridge Dr::January": {
+            "status": "COMPLETED",
+            "hotel": "Extended Stay America - Columbia - West - Stoneridge Dr",
+            "month": "January",
+            "file_path": "\\\\10.0.8.33\\Automation\\Download Data\\Team H\\hellogm\\Extended Stay America - Columbia - West - Stoneridge Dr - January_01-31-2026.xlsx",
+            "sheet_stats": {},
+            "timestamp": "2026-09-14 21:24:08"
+        },
+        "Extended Stay America - Columbia - West - Stoneridge Dr::February": {
+            "status": "COMPLETED",
+            "hotel": "Extended Stay America - Columbia - West - Stoneridge Dr",
+            "month": "February",
+            "file_path": "\\\\10.0.8.33\\Automation\\Download Data\\Team H\\hellogm\\Extended Stay America - Columbia - West - Stoneridge Dr - February_02-28-2026.xlsx",
+            "sheet_stats": {},
+            "timestamp": "2026-09-14 21:24:27"
+        },
+        "Extended Stay America - Columbia - West - Stoneridge Dr::March": {
+            "status": "COMPLETED",
+            "hotel": "Extended Stay America - Columbia - West - Stoneridge Dr",
+            "month": "March",
+            "file_path": "\\\\10.0.8.33\\Automation\\Download Data\\Team H\\hellogm\\Extended Stay America - Columbia - West - Stoneridge Dr - March_03-31-2026.xlsx",
+            "sheet_stats": {},
+            "timestamp": "2026-09-14 21:24:46"
+        },
+        "Extended Stay America - Columbia - West - Stoneridge Dr::April": {
+            "status": "COMPLETED",
+            "hotel": "Extended Stay America - Columbia - West - Stoneridge Dr",
+            "month": "April",
+            "file_path": "\\\\10.0.8.33\\Automation\\Download Data\\Team H\\hellogm\\Extended Stay America - Columbia - West - Stoneridge Dr - April_04-30-2026.xlsx",
+            "sheet_stats": {},
+            "timestamp": "2026-09-14 21:25:04"
+        },
+        "Extended Stay America - Columbia - West - Stoneridge Dr::May": {
+            "status": "COMPLETED",
+            "hotel": "Extended Stay America - Columbia - West - Stoneridge Dr",
+            "month": "May",
+            "file_path": "\\\\10.0.8.33\\Automation\\Download Data\\Team H\\hellogm\\Extended Stay America - Columbia - West - Stoneridge Dr - May_05-31-2026.xlsx",
+            "sheet_stats": {},
+            "timestamp": "2026-09-14 21:25:24"
+        },
+        "Extended Stay America - Columbia - West - Stoneridge Dr::June": {
+            "status": "COMPLETED",
+            "hotel": "Extended Stay America - Columbia - West - Stoneridge Dr",
+            "month": "June",
+            "file_path": "\\\\10.0.8.33\\Automation\\Download Data\\Team H\\hellogm\\Extended Stay America - Columbia - West - Stoneridge Dr - June_06-30-2026.xlsx",
+            "sheet_stats": {},
+            "timestamp": "2026-09-14 21:25:42"
+        },
+        "Extended Stay America - Columbia - West - Stoneridge Dr::July": {
+            "status": "COMPLETED",
+            "hotel": "Extended Stay America - Columbia - West - Stoneridge Dr",
+            "month": "July",
+            "file_path": "\\\\10.0.8.33\\Automation\\Download Data\\Team H\\hellogm\\Extended Stay America - Columbia - West - Stoneridge Dr - July_07-31-2026.xlsx",
+            "sheet_stats": {},
+            "timestamp": "2026-09-14 21:26:01"
+        },
+        "Extended Stay America - Columbia - West - Stoneridge Dr::August": {
+            "status": "COMPLETED",
+            "hotel": "Extended Stay America - Columbia - West - Stoneridge Dr",
+            "month": "August",
+            "file_path": "\\\\10.0.8.33\\Automation\\Download Data\\Team H\\hellogm\\Extended Stay America - Columbia - West - Stoneridge Dr - August_08-31-2026.xlsx",
+            "sheet_stats": {},
+            "timestamp": "2026-09-14 21:26:19"
+        },
+        "Extended Stay America - Columbia - West - Stoneridge Dr::September": {
+            "status": "COMPLETED",
+            "hotel": "Extended Stay America - Columbia - West - Stoneridge Dr",
+            "month": "September",
+            "file_path": "\\\\10.0.8.33\\Automation\\Download Data\\Team H\\hellogm\\Extended Stay America - Columbia - West - Stoneridge Dr - September_09-24-2026.xlsx",
+            "sheet_stats": {},
+            "timestamp": "2026-09-28 18:23:12"
+        },
+        "Motel 6 Greenville SC I-85::January": {
+            "status": "COMPLETED",
+            "hotel": "Motel 6 Greenville SC I-85",
+            "month": "January",
+            "file_path": "\\\\10.0.8.33\\Automation\\Download Data\\Team H\\hellogm\\Motel 6 Greenville SC I-85 - January_01-31-2026.xlsx",
+            "sheet_stats": {},
+            "timestamp": "2026-09-14 21:27:26"
+        },
+        "Motel 6 Greenville SC I-85::February": {
+            "status": "COMPLETED",
+            "hotel": "Motel 6 Greenville SC I-85",
+            "month": "February",
+            "file_path": "\\\\10.0.8.33\\Automation\\Download Data\\Team H\\hellogm\\Motel 6 Greenville SC I-85 - February_02-28-2026.xlsx",
+            "sheet_stats": {},
+            "timestamp": "2026-09-14 21:27:45"
+        },
+        "Motel 6 Greenville SC I-85::March": {
+            "status": "COMPLETED",
+            "hotel": "Motel 6 Greenville SC I-85",
+            "month": "March",
+            "file_path": "\\\\10.0.8.33\\Automation\\Download Data\\Team H\\hellogm\\Motel 6 Greenville SC I-85 - March_03-31-2026.xlsx",
+            "sheet_stats": {},
+            "timestamp": "2026-09-14 21:28:05"
+        },
+        "Motel 6 Greenville SC I-85::April": {
+            "status": "COMPLETED",
+            "hotel": "Motel 6 Greenville SC I-85",
+            "month": "April",
+            "file_path": "\\\\10.0.8.33\\Automation\\Download Data\\Team H\\hellogm\\Motel 6 Greenville SC I-85 - April_04-30-2026.xlsx",
+            "sheet_stats": {},
+            "timestamp": "2026-09-14 21:28:24"
+        },
+        "Motel 6 Greenville SC I-85::May": {
+            "status": "COMPLETED",
+            "hotel": "Motel 6 Greenville SC I-85",
+            "month": "May",
+            "file_path": "\\\\10.0.8.33\\Automation\\Download Data\\Team H\\hellogm\\Motel 6 Greenville SC I-85 - May_05-31-2026.xlsx",
+            "sheet_stats": {},
+            "timestamp": "2026-09-14 21:28:43"
+        },
+        "Motel 6 Greenville SC I-85::June": {
+            "status": "COMPLETED",
+            "hotel": "Motel 6 Greenville SC I-85",
+            "month": "June",
+            "file_path": "\\\\10.0.8.33\\Automation\\Download Data\\Team H\\hellogm\\Motel 6 Greenville SC I-85 - June_06-30-2026.xlsx",
+            "sheet_stats": {},
+            "timestamp": "2026-09-14 21:29:02"
+        },
+        "Motel 6 Greenville SC I-85::July": {
+            "status": "COMPLETED",
+            "hotel": "Motel 6 Greenville SC I-85",
+            "month": "July",
+            "file_path": "\\\\10.0.8.33\\Automation\\Download Data\\Team H\\hellogm\\Motel 6 Greenville SC I-85 - July_07-31-2026.xlsx",
+            "sheet_stats": {},
+            "timestamp": "2026-09-14 21:29:21"
+        },
+        "Motel 6 Greenville SC I-85::August": {
+            "status": "COMPLETED",
+            "hotel": "Motel 6 Greenville SC I-85",
+            "month": "August",
+            "file_path": "\\\\10.0.8.33\\Automation\\Download Data\\Team H\\hellogm\\Motel 6 Greenville SC I-85 - August_08-31-2026.xlsx",
+            "sheet_stats": {
+                "Refund": 57,
+                "Lowest Rates": 90
+            },
+            "timestamp": "2026-09-14 21:29:40"
+        },
+        "Motel 6 Greenville SC I-85::September": {
+            "status": "COMPLETED",
+            "hotel": "Motel 6 Greenville SC I-85",
+            "month": "September",
+            "file_path": "\\\\10.0.8.33\\Automation\\Download Data\\Team H\\hellogm\\Motel 6 Greenville SC I-85 - September_09-24-2026.xlsx",
+            "sheet_stats": {
+                "Refund": 42,
+                "Lowest Rates": 65,
+                "Comp Room": 1
+            },
+            "timestamp": "2026-09-28 18:24:02"
+        },
+        "Studio 6 Greenville SC I-85::January": {
+            "status": "COMPLETED",
+            "hotel": "Studio 6 Greenville SC I-85",
+            "month": "January",
+            "file_path": "\\\\10.0.8.33\\Automation\\Download Data\\Team H\\hellogm\\Studio 6 Greenville SC I-85 - January_01-31-2026.xlsx",
+            "sheet_stats": {},
+            "timestamp": "2026-09-14 21:30:50"
+        },
+        "Studio 6 Greenville SC I-85::February": {
+            "status": "COMPLETED",
+            "hotel": "Studio 6 Greenville SC I-85",
+            "month": "February",
+            "file_path": "\\\\10.0.8.33\\Automation\\Download Data\\Team H\\hellogm\\Studio 6 Greenville SC I-85 - February_02-28-2026.xlsx",
+            "sheet_stats": {},
+            "timestamp": "2026-09-14 21:31:09"
+        },
+        "Studio 6 Greenville SC I-85::March": {
+            "status": "COMPLETED",
+            "hotel": "Studio 6 Greenville SC I-85",
+            "month": "March",
+            "file_path": "\\\\10.0.8.33\\Automation\\Download Data\\Team H\\hellogm\\Studio 6 Greenville SC I-85 - March_03-31-2026.xlsx",
+            "sheet_stats": {},
+            "timestamp": "2026-09-14 21:31:28"
+        },
+        "Studio 6 Greenville SC I-85::April": {
+            "status": "COMPLETED",
+            "hotel": "Studio 6 Greenville SC I-85",
+            "month": "April",
+            "file_path": "\\\\10.0.8.33\\Automation\\Download Data\\Team H\\hellogm\\Studio 6 Greenville SC I-85 - April_04-30-2026.xlsx",
+            "sheet_stats": {},
+            "timestamp": "2026-09-14 21:31:47"
+        },
+        "Studio 6 Greenville SC I-85::May": {
+            "status": "COMPLETED",
+            "hotel": "Studio 6 Greenville SC I-85",
+            "month": "May",
+            "file_path": "\\\\10.0.8.33\\Automation\\Download Data\\Team H\\hellogm\\Studio 6 Greenville SC I-85 - May_05-31-2026.xlsx",
+            "sheet_stats": {},
+            "timestamp": "2026-09-14 21:32:06"
+        },
+        "Studio 6 Greenville SC I-85::June": {
+            "status": "COMPLETED",
+            "hotel": "Studio 6 Greenville SC I-85",
+            "month": "June",
+            "file_path": "\\\\10.0.8.33\\Automation\\Download Data\\Team H\\hellogm\\Studio 6 Greenville SC I-85 - June_06-30-2026.xlsx",
+            "sheet_stats": {},
+            "timestamp": "2026-09-14 21:32:26"
+        },
+        "Studio 6 Greenville SC I-85::July": {
+            "status": "COMPLETED",
+            "hotel": "Studio 6 Greenville SC I-85",
+            "month": "July",
+            "file_path": "\\\\10.0.8.33\\Automation\\Download Data\\Team H\\hellogm\\Studio 6 Greenville SC I-85 - July_07-31-2026.xlsx",
+            "sheet_stats": {},
+            "timestamp": "2026-09-14 21:32:44"
+        },
+        "Studio 6 Greenville SC I-85::August": {
+            "status": "COMPLETED",
+            "hotel": "Studio 6 Greenville SC I-85",
+            "month": "August",
+            "file_path": "\\\\10.0.8.33\\Automation\\Download Data\\Team H\\hellogm\\Studio 6 Greenville SC I-85 - August_08-31-2026.xlsx",
+            "sheet_stats": {
+                "Refund": 7,
+                "Lowest Rates": 97,
+                "No Shows": 2
+            },
+            "timestamp": "2026-09-14 21:33:03"
+        },
+        "Studio 6 Greenville SC I-85::September": {
+            "status": "COMPLETED",
+            "hotel": "Studio 6 Greenville SC I-85",
+            "month": "September",
+            "file_path": "\\\\10.0.8.33\\Automation\\Download Data\\Team H\\hellogm\\Studio 6 Greenville SC I-85 - September_09-24-2026.xlsx",
+            "sheet_stats": {
+                "Lowest Rates": 110,
+                "Comp Room": 1
+            },
+            "timestamp": "2026-09-28 18:24:53"
+        },
+        "Suburban Spartanburg::January": {
+            "status": "COMPLETED",
+            "hotel": "Suburban Spartanburg",
+            "month": "January",
+            "file_path": "\\\\10.0.8.33\\Automation\\Download Data\\Team H\\hellogm\\Suburban Spartanburg - January_01-31-2026.xlsx",
+            "sheet_stats": {},
+            "timestamp": "2026-09-14 21:34:10"
+        },
+        "Suburban Spartanburg::February": {
+            "status": "COMPLETED",
+            "hotel": "Suburban Spartanburg",
+            "month": "February",
+            "file_path": "\\\\10.0.8.33\\Automation\\Download Data\\Team H\\hellogm\\Suburban Spartanburg - February_02-28-2026.xlsx",
+            "sheet_stats": {},
+            "timestamp": "2026-09-14 21:34:29"
+        },
+        "Suburban Spartanburg::March": {
+            "status": "COMPLETED",
+            "hotel": "Suburban Spartanburg",
+            "month": "March",
+            "file_path": "\\\\10.0.8.33\\Automation\\Download Data\\Team H\\hellogm\\Suburban Spartanburg - March_03-31-2026.xlsx",
+            "sheet_stats": {},
+            "timestamp": "2026-09-14 21:34:48"
+        },
+        "Suburban Spartanburg::April": {
+            "status": "COMPLETED",
+            "hotel": "Suburban Spartanburg",
+            "month": "April",
+            "file_path": "\\\\10.0.8.33\\Automation\\Download Data\\Team H\\hellogm\\Suburban Spartanburg - April_04-30-2026.xlsx",
+            "sheet_stats": {},
+            "timestamp": "2026-09-14 21:35:07"
+        },
+        "Suburban Spartanburg::May": {
+            "status": "COMPLETED",
+            "hotel": "Suburban Spartanburg",
+            "month": "May",
+            "file_path": "\\\\10.0.8.33\\Automation\\Download Data\\Team H\\hellogm\\Suburban Spartanburg - May_05-31-2026.xlsx",
+            "sheet_stats": {},
+            "timestamp": "2026-09-14 21:35:26"
+        },
+        "Suburban Spartanburg::June": {
+            "status": "COMPLETED",
+            "hotel": "Suburban Spartanburg",
+            "month": "June",
+            "file_path": "\\\\10.0.8.33\\Automation\\Download Data\\Team H\\hellogm\\Suburban Spartanburg - June_06-30-2026.xlsx",
+            "sheet_stats": {},
+            "timestamp": "2026-09-14 21:35:45"
+        },
+        "Suburban Spartanburg::July": {
+            "status": "COMPLETED",
+            "hotel": "Suburban Spartanburg",
+            "month": "July",
+            "file_path": "\\\\10.0.8.33\\Automation\\Download Data\\Team H\\hellogm\\Suburban Spartanburg - July_07-31-2026.xlsx",
+            "sheet_stats": {},
+            "timestamp": "2026-09-14 21:36:04"
+        },
+        "Suburban Spartanburg::August": {
+            "status": "COMPLETED",
+            "hotel": "Suburban Spartanburg",
+            "month": "August",
+            "file_path": "\\\\10.0.8.33\\Automation\\Download Data\\Team H\\hellogm\\Suburban Spartanburg - August_08-31-2026.xlsx",
+            "sheet_stats": {},
+            "timestamp": "2026-09-14 21:36:23"
+        },
+        "Suburban Spartanburg::September": {
+            "status": "COMPLETED",
+            "hotel": "Suburban Spartanburg",
+            "month": "September",
+            "file_path": "\\\\10.0.8.33\\Automation\\Download Data\\Team H\\hellogm\\Suburban Spartanburg - September_09-24-2026.xlsx",
+            "sheet_stats": {
+                "Refund": 4,
+                "Lowest Rates": 15,
+                "No Shows": 2
+            },
+            "timestamp": "2026-09-28 18:25:47"
+        },
+        "Wingate Concord Charlotte Area::January": {
+            "status": "COMPLETED",
+            "hotel": "Wingate Concord Charlotte Area",
+            "month": "January",
+            "file_path": "\\\\10.0.8.33\\Automation\\Download Data\\Team H\\hellogm\\Wingate Concord Charlotte Area - January_01-31-2026.xlsx",
+            "sheet_stats": {
+                "Refund": 55,
+                "RoomCharge Adjustment": 186,
+                "Lowest Rates": 39,
+                "Comp Room": 297
+            },
+            "timestamp": "2026-09-14 21:37:57"
+        },
+        "Wingate Concord Charlotte Area::February": {
+            "status": "COMPLETED",
+            "hotel": "Wingate Concord Charlotte Area",
+            "month": "February",
+            "file_path": "\\\\10.0.8.33\\Automation\\Download Data\\Team H\\hellogm\\Wingate Concord Charlotte Area - February_02-28-2026.xlsx",
+            "sheet_stats": {
+                "Refund": 74,
+                "RoomCharge Adjustment": 65,
+                "Lowest Rates": 51,
+                "Comp Room": 114,
+                "No Shows": 1
+            },
+            "timestamp": "2026-09-14 21:38:18"
+        },
+        "Wingate Concord Charlotte Area::March": {
+            "status": "COMPLETED",
+            "hotel": "Wingate Concord Charlotte Area",
+            "month": "March",
+            "file_path": "\\\\10.0.8.33\\Automation\\Download Data\\Team H\\hellogm\\Wingate Concord Charlotte Area - March_03-31-2026.xlsx",
+            "sheet_stats": {
+                "Refund": 58,
+                "RoomCharge Adjustment": 102,
+                "Lowest Rates": 41,
+                "Comp Room": 158
+            },
+            "timestamp": "2026-09-14 21:38:39"
+        },
+        "Wingate Concord Charlotte Area::April": {
+            "status": "COMPLETED",
+            "hotel": "Wingate Concord Charlotte Area",
+            "month": "April",
+            "file_path": "\\\\10.0.8.33\\Automation\\Download Data\\Team H\\hellogm\\Wingate Concord Charlotte Area - April_04-30-2026.xlsx",
+            "sheet_stats": {
+                "Refund": 118,
+                "RoomCharge Adjustment": 78,
+                "Lowest Rates": 101,
+                "Comp Room": 79
+            },
+            "timestamp": "2026-09-14 21:39:00"
+        },
+        "Wingate Concord Charlotte Area::May": {
+            "status": "COMPLETED",
+            "hotel": "Wingate Concord Charlotte Area",
+            "month": "May",
+            "file_path": "\\\\10.0.8.33\\Automation\\Download Data\\Team H\\hellogm\\Wingate Concord Charlotte Area - May_05-31-2026.xlsx",
+            "sheet_stats": {
+                "Refund": 68,
+                "RoomCharge Adjustment": 3,
+                "Lowest Rates": 72
+            },
+            "timestamp": "2026-09-14 21:39:20"
+        },
+        "Wingate Concord Charlotte Area::June": {
+            "status": "COMPLETED",
+            "hotel": "Wingate Concord Charlotte Area",
+            "month": "June",
+            "file_path": "\\\\10.0.8.33\\Automation\\Download Data\\Team H\\hellogm\\Wingate Concord Charlotte Area - June_06-30-2026.xlsx",
+            "sheet_stats": {
+                "Refund": 34,
+                "RoomCharge Adjustment": 29,
+                "Lowest Rates": 50,
+                "Comp Room": 29,
+                "No Shows": 2
+            },
+            "timestamp": "2026-09-14 21:39:40"
+        },
+        "Wingate Concord Charlotte Area::July": {
+            "status": "COMPLETED",
+            "hotel": "Wingate Concord Charlotte Area",
+            "month": "July",
+            "file_path": "\\\\10.0.8.33\\Automation\\Download Data\\Team H\\hellogm\\Wingate Concord Charlotte Area - July_07-31-2026.xlsx",
+            "sheet_stats": {
+                "Refund": 40,
+                "RoomCharge Adjustment": 4,
+                "Lowest Rates": 71
+            },
+            "timestamp": "2026-09-14 21:39:59"
+        },
+        "Wingate Concord Charlotte Area::August": {
+            "status": "COMPLETED",
+            "hotel": "Wingate Concord Charlotte Area",
+            "month": "August",
+            "file_path": "\\\\10.0.8.33\\Automation\\Download Data\\Team H\\hellogm\\Wingate Concord Charlotte Area - August_08-31-2026.xlsx",
+            "sheet_stats": {
+                "Refund": 36,
+                "RoomCharge Adjustment": 38,
+                "Lowest Rates": 50,
+                "Comp Room": 58
+            },
+            "timestamp": "2026-09-14 21:40:19"
+        },
+        "Wingate Concord Charlotte Area::September": {
+            "status": "COMPLETED",
+            "hotel": "Wingate Concord Charlotte Area",
+            "month": "September",
+            "file_path": "\\\\10.0.8.33\\Automation\\Download Data\\Team H\\hellogm\\Wingate Concord Charlotte Area - September_09-24-2026.xlsx",
+            "sheet_stats": {
+                "Refund": 45,
+                "RoomCharge Adjustment": 29,
+                "Lowest Rates": 39,
+                "Comp Room": 55
+            },
+            "timestamp": "2026-09-28 18:26:39"
+        }
+    },
+    "completed_hotels": {
+        "Country Inn & Suites Huntersville": {
+            "status": "COMPLETED",
+            "combined_file_path": "\\\\10.0.8.33\\Automation\\Download Data\\Team H\\hellogm\\Country Inn & Suites Huntersville - Full Year Combined.xlsx",
+            "sheet_counts": {
+                "No Shows": 1,
+                "Lowest Rates": 22,
+                "Comp Room": 16
+            },
+            "timestamp": "2026-09-28 18:22:26"
+        },
+        "Motel 6 Greenville SC I-85": {
+            "status": "COMPLETED",
+            "combined_file_path": "\\\\10.0.8.33\\Automation\\Download Data\\Team H\\hellogm\\Motel 6 Greenville SC I-85 - Full Year Combined.xlsx",
+            "sheet_counts": {
+                "Lowest Rates": 155,
+                "Refund": 99,
+                "Comp Room": 1
+            },
+            "timestamp": "2026-09-28 18:24:04"
+        },
+        "Studio 6 Greenville SC I-85": {
+            "status": "COMPLETED",
+            "combined_file_path": "\\\\10.0.8.33\\Automation\\Download Data\\Team H\\hellogm\\Studio 6 Greenville SC I-85 - Full Year Combined.xlsx",
+            "sheet_counts": {
+                "No Shows": 2,
+                "Lowest Rates": 207,
+                "Refund": 7,
+                "Comp Room": 1
+            },
+            "timestamp": "2026-09-28 18:24:56"
+        },
+        "Wingate Concord Charlotte Area": {
+            "status": "COMPLETED",
+            "combined_file_path": "\\\\10.0.8.33\\Automation\\Download Data\\Team H\\hellogm\\Wingate Concord Charlotte Area - Full Year Combined.xlsx",
+            "sheet_counts": {
+                "Comp Room": 790,
+                "Lowest Rates": 514,
+                "No Shows": 3,
+                "Refund": 528,
+                "RoomCharge Adjustment": 534
+            },
+            "timestamp": "2026-09-28 18:26:45"
+        },
+        "Suburban Spartanburg": {
+            "status": "COMPLETED",
+            "combined_file_path": "\\\\10.0.8.33\\Automation\\Download Data\\Team H\\hellogm\\Suburban Spartanburg - Full Year Combined.xlsx",
+            "sheet_counts": {
+                "No Shows": 2,
+                "Lowest Rates": 15,
+                "Refund": 4
+            },
+            "timestamp": "2026-09-28 18:25:50"
+        }
+    },
+    "all_completed": true,
+    "master_file": "\\\\10.0.8.33\\Automation\\Download Data\\Team H\\hellogm\\ALL HOTELS - Full Year Combined.xlsx",
+    "last_run_timestamp": "2026-09-28 18:27:00"
+}

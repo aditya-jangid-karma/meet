@@ -1,0 +1,25 @@
+{
+  "root": "C:\\Users\\Admin\\OneDrive\\PDF splitter",
+  "poppler_path": "C:\\poppler\\poppler-26.02.0\\Library\\bin",
+  "ollama_host": "http://localhost:11434",
+  "model": "qwen2.5vl:7b",
+  "dpi": 200,
+  "num_ctx": 8192,
+  "timeout": 300,
+
+  "_known_vendors_note": "Approved supplier names. Whatever the AI reads off a page is matched against this list and the APPROVED spelling is used for the filename, so one supplier always files under one name. Add new suppliers here as they appear.",
+  "known_vendors": [
+    "Chadwell Supply",
+    "Cockey's Enterprises, Inc.",
+    "Constellation NewEnergy, Inc.",
+    "Ferguson Enterprises LLC #1300",
+    "Ferguson Facilities Supply",
+    "Happy Summers",
+    "L&C Pest Management Systems, LLC",
+    "Quill",
+    "RMS Contractors Inc",
+    "Sharp Business Systems",
+    "Staples",
+    "Summit Fire & Security, LLC"
+  ]
+}

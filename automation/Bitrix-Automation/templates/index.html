@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bitrix24 Task Manager</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 30px; background-color: #f4f6f9; }
+        .container { max-width: 900px; margin: auto; background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        .top-bar { display: flex; justify-content: space-between; align-items: center; }
+        .stats-badge { background: #e9ecef; padding: 6px 12px; border-radius: 20px; font-weight: bold; color: #495057; font-size: 14px; }
+        .btn { padding: 8px 12px; border: none; border-radius: 4px; cursor: pointer; text-decoration: none; color: white; display: inline-block; }
+        .btn-green { background-color: #28a745; }
+        .btn-blue { background-color: #007bff; }
+        .btn-red { background-color: #dc3545; }
+        .btn-secondary { background-color: #6c757d; }
+        .search-bar { margin: 15px 0; display: flex; gap: 10px; }
+        .inline-form { display: flex; gap: 5px; margin: 0; }
+        table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+        th, td { border: 1px solid #ddd; padding: 10px; text-align: left; }
+        th { background-color: #f8f9fa; }
+        input[type="text"] { padding: 8px; border: 1px solid #ccc; border-radius: 4px; flex-grow: 1; }
+        .pagination { display: flex; justify-content: center; align-items: center; gap: 10px; margin-top: 20px; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="top-bar">
+        <h1>Bitrix24 Task Manager</h1>
+        <a href="/download-json" class="btn btn-green">📥 Download Tasks JSON</a>
+    </div>
+
+    <!-- COUNT BADGE & SEARCH BAR -->
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 10px;">
+        <span class="stats-badge">Total Tasks Found: {{ total_count }}</span>
+    </div>
+
+    <form action="/" method="GET" class="search-bar">
+        <input type="text" name="search" placeholder="Search tasks by ID or Title..." value="{{ search_query }}">
+        <button type="submit" class="btn btn-blue">Search</button>
+        {% if search_query %}
+            <a href="/" class="btn btn-secondary">Clear</a>
+        {% endif %}
+    </form>
+
+    <hr>
+
+    <!-- CREATE FORM -->
+    <h3>Add New Task</h3>
+    <form action="/create" method="POST" class="inline-form" style="margin-bottom: 20px;">
+        <input type="text" name="title" placeholder="Task Title" required>
+        <input type="text" name="responsible_id" value="0" style="width: 100px;" placeholder="User ID">
+        <button type="submit" class="btn btn-blue">Add Task</button>
+    </form>
+
+    <hr>
+
+    <!-- READ / UPDATE / DELETE TABLE -->
+    <h3>Tasks List</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Title (Edit Inline)</th>
+                <th>Status</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for task in tasks %}
+            <tr>
+                <td>{{ task.ID }}</td>
+                <td>
+                    <form action="/update/{{ task.ID }}" method="POST" class="inline-form">
+                        <input type="text" name="title" value="{{ task.TITLE }}">
+                        <button type="submit" class="btn btn-blue" style="font-size: 12px;">Save</button>
+                    </form>
+                </td>
+                <td>{{ task.STATUS }}</td>
+                <td>
+                    <a href="/delete/{{ task.ID }}" class="btn btn-red" style="font-size: 12px;" onclick="return confirm('Delete task {{ task.ID }}?')">Delete</a>
+                </td>
+            </tr>
+            {% else %}
+            <tr>
+                <td colspan="4" style="text-align: center;">No matching tasks found.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <!-- PAGINATION CONTROLS -->
+    {% if total_pages > 1 %}
+    <div class="pagination">
+        {% if page > 1 %}
+            <a href="{{ url_for('index', page=page-1, search=search_query) }}" class="btn btn-secondary">« Previous</a>
+        {% endif %}
+
+        <span>Page <strong>{{ page }}</strong> of <strong>{{ total_pages }}</strong></span>
+
+        {% if page < total_pages %}
+            <a href="{{ url_for('index', page=page+1, search=search_query) }}" class="btn btn-secondary">Next »</a>
+        {% endif %}
+    </div>
+    {% endif %}
+</div>
+
+</body>
+</html>

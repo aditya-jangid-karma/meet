@@ -1,0 +1,56 @@
+# =====================================================================
+#  Res1 - Team D automations
+#
+#  CORRECTED 2026-08-19. The earlier header here claimed this folder was
+#  LOCAL-ONLY with no git repository. That was WRONG: a git repository DOES
+#  exist and covers both Invoice_Indexer and PDF Spliter. So the rules below
+#  are LIVE - they decide what actually gets committed, not hypothetical
+#  insurance. Treat every line as load-bearing.
+#
+#  Separate standing rule, re-confirmed by the user: Claude must not run or
+#  suggest ANY git command. Version control is handled by the user.
+# =====================================================================
+
+# Claude Code's own folder - settings, skills, and local permission
+# grants. Not project work, and settings.local.json can record machine-
+# specific paths.
+.claude/
+
+# ---------------------------------------------------------------------
+#  Secrets. Never commit these under any circumstances.
+# ---------------------------------------------------------------------
+.env
+.env.*
+!.env.example
+*.key
+*.pem
+credentials.json
+config.json
+
+# Saved logins - anyone holding one can act as the user until it expires.
+*session*.json
+
+# ---------------------------------------------------------------------
+#  Client data
+# ---------------------------------------------------------------------
+# Invoice PDFs, generated reports and run logs all contain client
+# financial detail and vendor names.
+**/input/*.pdf
+**/output/
+**/logs/
+
+# ---------------------------------------------------------------------
+#  Environments and downloaded tooling - large, and rebuildable
+# ---------------------------------------------------------------------
+.venv/
+**/.venv/
+**/.browsers/
+
+# ---------------------------------------------------------------------
+#  Python and Windows noise
+# ---------------------------------------------------------------------
+__pycache__/
+*.pyc
+Thumbs.db
+desktop.ini
+~$*

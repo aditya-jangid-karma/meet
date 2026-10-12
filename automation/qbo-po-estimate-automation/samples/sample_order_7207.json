@@ -1,0 +1,21 @@
+{
+  "supplier_name": "A-TEX INTERNATIONAL CO., LIMITED",
+  "supplier_po_number": "AT-26209",
+  "order_number": "7207",
+  "po_date": "09/18/2026",
+  "ship_from": "SHANGHAI, CHINA",
+  "ship_to": "BUENAVENTURA, COLOMBIA",
+  "ship_via": "BY SEA",
+  "currency": "USD",
+  "total_amount": 29120.00,
+  "line_items": [
+    {
+      "item_code": "AT-2080-1",
+      "description": "TEXTILES / ORDER#7207 / 92%RAYON - 8%POLYESTER / 280-295GM / 58/59\"",
+      "quantity": 22400.0,
+      "unit_price": 1.30,
+      "line_total": 29120.00,
+      "unit_of_measure": "MTS"
+    }
+  ]
+}

@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Mac + Windows Setup — Invoice Automation (Team D)</title>
+<style>
+  :root {
+    --ink: #1f2933;
+    --sub-ink: #52606d;
+    --bg: #ffffff;
+    --panel: #f5f7fa;
+    --panel-border: #d9e2ec;
+    --accent: #1f5f8b;
+    --accent-soft: #e6f0f7;
+    --code-bg: #eef1f5;
+    --code-border: #cbd2d9;
+    --ok: #1b7a43;
+    --warn: #a15c00;
+    --mac: #6b4ea1;
+    --win: #1f5f8b;
+  }
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0;
+    padding: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: "Segoe UI", Calibri, Arial, Helvetica, sans-serif;
+    line-height: 1.6;
+    font-size: 16px;
+  }
+  .wrap {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 32px 24px 80px 24px;
+  }
+  header.page-header {
+    border-bottom: 4px solid var(--accent);
+    padding-bottom: 20px;
+    margin-bottom: 28px;
+  }
+  header.page-header h1 {
+    margin: 0 0 8px 0;
+    font-size: 28px;
+    color: var(--ink);
+  }
+  header.page-header .subtitle {
+    color: var(--sub-ink);
+    font-size: 15px;
+  }
+  header.page-header .meta {
+    margin-top: 10px;
+    font-size: 13px;
+    color: var(--sub-ink);
+  }
+  h2 {
+    font-size: 22px;
+    color: var(--ink);
+    border-bottom: 2px solid var(--panel-border);
+    padding-bottom: 6px;
+    margin-top: 44px;
+    scroll-margin-top: 16px;
+  }
+  h3 {
+    font-size: 18px;
+    color: var(--ink);
+    margin-top: 30px;
+    scroll-margin-top: 16px;
+  }
+  h4 {
+    font-size: 15.5px;
+    color: var(--accent);
+    margin-top: 22px;
+    margin-bottom: 6px;
+  }
+  p { margin: 10px 0; }
+  a { color: var(--accent); }
+  ul, ol { padding-left: 26px; }
+  li { margin: 6px 0; }
+
+  .intro-box {
+    background: var(--accent-soft);
+    border: 1px solid var(--panel-border);
+    border-left: 5px solid var(--accent);
+    border-radius: 6px;
+    padding: 16px 18px;
+    margin: 18px 0;
+  }
+
+  nav.toc {
+    background: var(--panel);
+    border: 1px solid var(--panel-border);
+    border-radius: 8px;
+    padding: 16px 22px;
+    margin: 24px 0;
+  }
+  nav.toc h2 {
+    border: none;
+    margin: 0 0 8px 0;
+    font-size: 17px;
+    padding: 0;
+  }
+  nav.toc ol { margin: 0; padding-left: 22px; }
+  nav.toc li { margin: 4px 0; }
+  nav.toc a { text-decoration: none; }
+  nav.toc a:hover { text-decoration: underline; }
+
+  .checklist {
+    list-style: none;
+    padding-left: 0;
+  }
+  .checklist li {
+    padding: 10px 12px 10px 40px;
+    margin: 8px 0;
+    background: var(--panel);
+    border: 1px solid var(--panel-border);
+    border-radius: 6px;
+    position: relative;
+  }
+  .checklist li::before {
+    content: "\2610";
+    position: absolute;
+    left: 12px;
+    top: 9px;
+    font-size: 18px;
+    color: var(--accent);
+  }
+
+  dl.glossary dt {
+    font-weight: 600;
+    color: var(--ink);
+    margin-top: 14px;
+  }
+  dl.glossary dd {
+    margin: 4px 0 0 0;
+    color: var(--sub-ink);
+  }
+
+  .table-scroll {
+    overflow-x: auto;
+    margin: 16px 0;
+    border: 1px solid var(--panel-border);
+    border-radius: 6px;
+  }
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    min-width: 480px;
+    font-size: 14.5px;
+  }
+  th, td {
+    border: 1px solid var(--panel-border);
+    padding: 9px 12px;
+    text-align: left;
+    vertical-align: top;
+  }
+  th {
+    background: var(--accent);
+    color: #ffffff;
+    font-weight: 600;
+  }
+  tr:nth-child(even) td {
+    background: var(--panel);
+  }
+
+  pre, code {
+    font-family: Consolas, "Courier New", monospace;
+  }
+  pre {
+    background: var(--code-bg);
+    border: 1px solid var(--code-border);
+    border-radius: 6px;
+    padding: 14px 16px;
+    overflow-x: auto;
+    white-space: pre;
+    font-size: 13.5px;
+    line-height: 1.5;
+    margin: 12px 0;
+  }
+  code.inline {
+    background: var(--code-bg);
+    border: 1px solid var(--code-border);
+    border-radius: 4px;
+    padding: 1px 6px;
+    font-size: 13.5px;
+    word-break: break-word;
+  }
+  .code-label {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--sub-ink);
+    margin: 14px 0 -4px 0;
+    font-weight: 600;
+  }
+
+  .step {
+    border: 1px solid var(--panel-border);
+    border-left: 5px solid var(--accent);
+    border-radius: 6px;
+    padding: 14px 18px;
+    margin: 18px 0;
+    background: #fff;
+  }
+  .step.mac { border-left-color: var(--mac); }
+  .step .step-title {
+    font-weight: 700;
+    font-size: 16px;
+    color: var(--ink);
+    margin-bottom: 8px;
+  }
+  .step-num {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: var(--accent);
+    color: #fff;
+    font-size: 13px;
+    font-weight: 700;
+    margin-right: 8px;
+  }
+  .step.mac .step-num { background: var(--mac); }
+
+  .machine-banner {
+    display: inline-block;
+    font-weight: 700;
+    font-size: 13px;
+    color: #fff;
+    padding: 4px 12px;
+    border-radius: 20px;
+    margin-bottom: 6px;
+    letter-spacing: 0.02em;
+  }
+  .machine-banner.mac { background: var(--mac); }
+  .machine-banner.win { background: var(--win); }
+
+  .note {
+    background: #fff8e6;
+    border: 1px solid #f0dca0;
+    border-left: 5px solid var(--warn);
+    border-radius: 6px;
+    padding: 10px 16px;
+    margin: 14px 0;
+    font-size: 14.5px;
+  }
+  .note strong { color: var(--warn); }
+
+  .privacy-note {
+    background: #fdeeee;
+    border: 1px solid #f0b8b8;
+    border-left: 5px solid #b23b3b;
+    border-radius: 6px;
+    padding: 10px 16px;
+    margin: 12px 0;
+    font-size: 14.5px;
+  }
+  .privacy-note strong { color: #b23b3b; }
+
+  .tip {
+    background: #eafaf0;
+    border: 1px solid #b9e6c8;
+    border-left: 5px solid var(--ok);
+    border-radius: 6px;
+    padding: 10px 16px;
+    margin: 12px 0;
+    font-size: 14.5px;
+  }
+  .tip strong { color: var(--ok); }
+
+  .picture-box {
+    background: var(--panel);
+    border: 1px solid var(--panel-border);
+    border-radius: 8px;
+    padding: 18px 20px;
+    margin: 16px 0;
+  }
+  .picture-box pre {
+    background: #fff;
+    font-size: 13px;
+  }
+
+  details.faq {
+    border: 1px solid var(--panel-border);
+    border-radius: 6px;
+    margin: 10px 0;
+    padding: 6px 14px;
+    background: var(--panel);
+  }
+  details.faq summary {
+    cursor: pointer;
+    font-weight: 600;
+    padding: 8px 0;
+    color: var(--ink);
+  }
+  details.faq[open] summary { color: var(--accent); }
+  details.faq p { margin: 6px 0 12px 0; }
+
+  .claude-context {
+    background: #f0f4f8;
+    border: 2px solid var(--accent);
+    border-radius: 8px;
+    padding: 4px 20px 16px 20px;
+    margin: 16px 0;
+  }
+  .claude-context pre {
+    white-space: pre-wrap;
+  }
+
+  footer {
+    margin-top: 60px;
+    padding-top: 16px;
+    border-top: 1px solid var(--panel-border);
+    font-size: 13px;
+    color: var(--sub-ink);
+  }
+
+  @media (max-width: 600px) {
+    .wrap { padding: 20px 14px 60px 14px; }
+    header.page-header h1 { font-size: 22px; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="page-header">
+  <h1>Setting Up the Mac (AI + Files) and Windows PCs (Run the Script)</h1>
+  <p class="subtitle">A step-by-step, plain-English setup guide for Team D (Puneet, Dhruv, Manish, Vijayesh)</p>
+  <p class="meta">Written: 2026-07-30 &nbsp;|&nbsp; Revised: 2026-08-04 (script now runs on Windows) &nbsp;|&nbsp; Level: no coding background required</p>
+</header>
+
+<div class="intro-box">
+  <p><strong>What we're setting up.</strong> The invoice-reading script needs help from an AI model (called <strong>Qwen</strong>) to correctly identify vendors that only appear as a logo or name at the top of a page — the cases the current script misses (Happy Summers, Quill, Chadwell Supply, etc.). Qwen runs on a <strong>Mac</strong>, for privacy: client invoice data stays inside the office network and never goes to a cloud AI service.</p>
+  <p><strong>The important change (revised 2026-08-04).</strong> An earlier draft of this guide had the script <em>running on the Mac</em>. That won't work for Team D — everyone uses Windows. So the design is now split cleanly by machine:</p>
+  <ul>
+    <li><strong>The Mac does two things only:</strong> runs Qwen (the AI), and hosts the shared folder where PDFs and the Excel report live. No Python, no script, nothing to run on it day to day.</li>
+    <li><strong>The Windows PC runs the script</strong> — exactly like Team D already did before any of this AI work. When it hits the vendor step, it asks the Mac's Qwen over the office network and carries on.</li>
+  </ul>
+  <div class="tip"><strong>No API keys anywhere.</strong> The local Qwen (via Ollama) needs no account, no key, no login. If any website ever offers you a "Qwen API key," that's the paid <em>cloud</em> version (Alibaba Cloud / DashScope) — do not use it; it would send client data off-site. Our Qwen is the free local one.</div>
+</div>
+
+<nav class="toc" aria-label="Table of contents">
+  <h2>Contents</h2>
+  <ol>
+    <li><a href="#picture">What we're building, in one picture</a></li>
+    <li><a href="#glossary">Glossary — key terms explained</a></li>
+    <li><a href="#macA">MAC — Part A: Host the shared folder (File Sharing)</a></li>
+    <li><a href="#macB">MAC — Part B: Expose Qwen on the network</a></li>
+    <li><a href="#winA">WINDOWS — Part C: Map the shared folder as Z:</a></li>
+    <li><a href="#winB">WINDOWS — Part D: Install Python, Tesseract &amp; the script</a></li>
+    <li><a href="#winC">WINDOWS — Part E: Update config.json</a></li>
+    <li><a href="#winD">WINDOWS — Part F: First test run</a></li>
+    <li><a href="#addpc">Adding another Windows PC (quick checklist)</a></li>
+    <li><a href="#faq">Troubleshooting FAQ</a></li>
+    <li><a href="#claude-context">What to tell Claude if you get stuck</a></li>
+  </ol>
+</nav>
+
+<!-- ======================= PICTURE ======================= -->
+<h2 id="picture">1. What we're building, in one picture</h2>
+<div class="picture-box">
+<pre>WINDOWS PC  (runs the script — 1 to 3 of these)     MAC  (AI + file host only)
+-----------------------------------------------      --------------------------
+Has installed: Python + Tesseract + the script       Runs: Ollama + Qwen
+                                                      (model qwen2.5vl:7b)
+Drops PDFs into  Z:\input   ───(shared folder)───►    lives on the Mac at
+                                                      ~/Res1/input/
+Runs:  python invoice_boundary_detector.py
+              │
+              │   "Who is the vendor on this page?"
+              └──────────(office network)───────────►  Qwen answers
+                                                        http://<mac-ip>:11434
+              │
+              ▼
+Writes the report back to  Z:\output\reports\predictions.xlsx  (also on the Mac)
+Finished PDFs move to      Z:\input\_processed\
+</pre>
+</div>
+<p>Two separate connections run between the PCs and the Mac, and it helps to keep them straight:</p>
+<ul>
+  <li><strong>The shared folder</strong> (the <code class="inline">Z:</code> drive) — how files get to and from the Mac. This is macOS File Sharing.</li>
+  <li><strong>The Qwen call</strong> (to port <code class="inline">11434</code>) — how the script asks the AI who the vendor is. This is Ollama on the network.</li>
+</ul>
+<p>They're set up in separate steps below and can be tested separately.</p>
+
+<!-- ======================= GLOSSARY ======================= -->
+<h2 id="glossary">2. Glossary — key terms explained</h2>
+<dl class="glossary">
+  <dt>File share</dt>
+  <dd>A folder on one computer that other computers on the same network can open and use as if it were their own — no copying files back and forth by hand. Here, the Mac shares a folder that the Windows PCs use.</dd>
+
+  <dt>SMB</dt>
+  <dd>("Server Message Block") — the language computers use to talk to a file share over a network. macOS and Windows both understand it natively, so no extra software is needed.</dd>
+
+  <dt>IP address</dt>
+  <dd>A set of numbers (like <code class="inline">192.168.1.42</code>) that identifies one computer on your local network — like a street address, but for a device. The Windows PCs need the Mac's IP address to reach both its shared folder and its Qwen.</dd>
+
+  <dt>Mapped drive</dt>
+  <dd>A Windows shortcut that makes a folder on another computer show up as its own drive letter (like <code class="inline">Z:</code>), so it behaves just like a local folder.</dd>
+
+  <dt>Ollama</dt>
+  <dd>Free software that runs an AI model directly on the Mac, privately, with no internet needed once the model is downloaded. This is what keeps client invoice data from leaving the office.</dd>
+
+  <dt>Qwen</dt>
+  <dd>The specific AI model this project uses, running inside Ollama on the Mac. The exact installed version is <code class="inline">qwen2.5vl:7b</code> — a "vision" model that can read both text and page images.</dd>
+
+  <dt>Port</dt>
+  <dd>A numbered "door" a program listens on for requests. Ollama listens on port <code class="inline">11434</code> — you'll see that number throughout this guide.</dd>
+
+  <dt>Localhost vs. network address</dt>
+  <dd><code class="inline">localhost</code> means "this same computer." By default Ollama only answers <code class="inline">localhost</code>, so only the Mac itself can reach it. To let the Windows PCs reach it, we tell Ollama to also answer on the Mac's <em>network</em> address — that's the one-time <code class="inline">OLLAMA_HOST</code> step in Part B.</dd>
+
+  <dt>Tesseract</dt>
+  <dd>A free tool that reads text out of a picture of a page (OCR). Only needed as a fallback for the rare scanned/photographed invoice. It installs on <strong>Windows</strong> now (where the script runs), not the Mac.</dd>
+
+  <dt>Path</dt>
+  <dd>The exact address of a file or folder, e.g. <code class="inline">Z:\input</code> on Windows (backslashes, drive letter) versus <code class="inline">/Users/admin/Res1/input</code> on the Mac (forward slashes). This is why <code class="inline">config.json</code> uses Windows-style paths now.</dd>
+</dl>
+
+<!-- ================================================================= -->
+<!-- ==========================  MAC  ================================ -->
+<!-- ================================================================= -->
+<h2 id="macA">3. <span class="machine-banner mac">ON THE MAC</span> Part A — Host the shared folder</h2>
+<p>This makes the Mac's <code class="inline">Res1</code> folder visible to the Windows PCs as a network drive. It's the same File Sharing feature built into every Mac.</p>
+
+<div class="step mac">
+  <div class="step-title"><span class="step-num">1</span>Create the project folder and subfolders</div>
+  <p>In Finder, create a folder <code class="inline">Res1</code> in your Home folder, and inside it create:</p>
+  <ul>
+    <li><code class="inline">input</code> — where PDFs land</li>
+    <li><code class="inline">input/_processed</code> — where finished PDFs get moved after a successful run (can also be auto-created by the script)</li>
+    <li><code class="inline">output/reports</code> — where <code class="inline">predictions.xlsx</code> lives</li>
+  </ul>
+</div>
+<div class="step mac">
+  <div class="step-title"><span class="step-num">2</span>Turn on File Sharing and add the folder</div>
+  <p>Apple menu &rarr; <strong>System Settings</strong> &rarr; <strong>General</strong> &rarr; <strong>Sharing</strong>. Switch <strong>File Sharing</strong> on. Click the <strong>(i)</strong> next to it, then <strong>+</strong> under "Shared Folders" and add <code class="inline">Res1</code>.</p>
+  <p><strong>What you should see:</strong> <code class="inline">Res1</code> listed under Shared Folders.</p>
+</div>
+<div class="step mac">
+  <div class="step-title"><span class="step-num">3</span>Give the account Read &amp; Write</div>
+  <p>Under "Users," make sure the Mac account the Windows PCs will connect with has <strong>Read &amp; Write</strong> (not "Read Only") — otherwise the script can't save the Excel file or move processed PDFs.</p>
+</div>
+<div class="step mac">
+  <div class="step-title"><span class="step-num">4</span>Note the Mac's name and IP address</div>
+  <p>In the Sharing pane you'll see an address like <code class="inline">smb://Admins-Mac-mini.local</code> — note the name. Then System Settings &rarr; <strong>Wi-Fi</strong> (or <strong>Network</strong>) &rarr; <strong>Details</strong> &rarr; note the IP address, e.g. <code class="inline">192.168.1.42</code>. <strong>Write both down</strong> — you'll use them from Windows for <em>both</em> the drive and the Qwen address.</p>
+</div>
+<div class="note">
+  <strong>Why a fixed IP address matters:</strong> the office router can hand the Mac a different IP after a reboot, which would silently break both the <code class="inline">Z:</code> drive and the Qwen connection on every Windows PC at once. Ask whoever manages the router to set a <strong>DHCP reservation</strong> (static lease) for the Mac. If that's not possible yet, using the Mac's <em>name</em> (<code class="inline">Admins-Mac-mini.local</code>) instead of the number avoids the problem, as long as the name doesn't change.
+</div>
+
+<h2 id="macB">4. <span class="machine-banner mac">ON THE MAC</span> Part B — Expose Qwen on the network</h2>
+<p>This part assumes Ollama and <code class="inline">qwen2.5vl:7b</code> are already installed (confirmed working on 2026-08-04). By default Qwen only answers the Mac itself; this one-time change lets the Windows PCs reach it too.</p>
+
+<div class="step mac">
+  <div class="step-title"><span class="step-num">1</span>Confirm Qwen works locally first</div>
+  <p>Open <strong>Terminal</strong> (Cmd+Space, type "Terminal") and run:</p>
+  <pre>ollama list</pre>
+  <p><strong>What you should see:</strong> a row <code class="inline">qwen2.5vl:7b</code>. (Already confirmed for this Mac.) Then prove it answers:</p>
+  <pre>curl http://localhost:11434/api/generate -d '{"model":"qwen2.5vl:7b","prompt":"Say hello in one word.","stream":false}'</pre>
+  <p><strong>What you should see:</strong> a JSON reply with a <code class="inline">"response"</code> field containing a word like "Hello". No key is asked for — that's expected and correct.</p>
+</div>
+<div class="step mac">
+  <div class="step-title"><span class="step-num">2</span>Tell Ollama to listen on the network</div>
+  <p>In Terminal, run this one line (it sets Ollama to answer on all network addresses, not just localhost):</p>
+  <pre>launchctl setenv OLLAMA_HOST "0.0.0.0:11434"</pre>
+  <p>Then quit and reopen the Ollama app so it picks up the change: click the Ollama icon in the menu bar at the top of the screen &rarr; <strong>Quit</strong>, then open Ollama again from Applications.</p>
+</div>
+<div class="step mac">
+  <div class="step-title"><span class="step-num">3</span>Confirm it's reachable by address</div>
+  <p>Still on the Mac, test using the Mac's own IP address (from Part A step 4) instead of localhost:</p>
+  <pre>curl http://192.168.1.42:11434/api/tags</pre>
+  <p><strong>What you should see:</strong> the same JSON model list as before. If this works with the IP address, a Windows PC on the same network will be able to reach it too.</p>
+</div>
+<div class="privacy-note">
+  <strong>Security note (worth knowing):</strong> exposing Ollama on the network means any device on the <em>office</em> network can reach port <code class="inline">11434</code> on the Mac. That's acceptable here — it's a private office network, and Ollama stores no client data (it only answers questions and forgets them). Just don't do this on public Wi-Fi, and never forward this port to the internet.
+</div>
+
+<!-- ================================================================= -->
+<!-- =========================  WINDOWS  ============================ -->
+<!-- ================================================================= -->
+<h2 id="winA">5. <span class="machine-banner win">ON EACH WINDOWS PC</span> Part C — Map the shared folder as Z:</h2>
+<div class="step">
+  <div class="step-title"><span class="step-num">1</span>Open Map Network Drive</div>
+  <p>File Explorer &rarr; <strong>This PC</strong> &rarr; right-click &rarr; <strong>Map network drive…</strong></p>
+</div>
+<div class="step">
+  <div class="step-title"><span class="step-num">2</span>Fill it in</div>
+  <ul>
+    <li><strong>Drive:</strong> <code class="inline">Z:</code></li>
+    <li><strong>Folder:</strong> <code class="inline">\\Admins-Mac-mini.local\Res1</code> (or <code class="inline">\\192.168.1.42\Res1</code>)</li>
+    <li>Tick <strong>Reconnect at sign-in</strong> and <strong>Connect using different credentials</strong></li>
+  </ul>
+  <p>When prompted, enter the Mac account's username and password (the one you gave Read &amp; Write in Mac Part A step 3).</p>
+</div>
+<div class="tip">
+  <strong>Test it:</strong> create a small text file in <code class="inline">Z:\input</code>, then check it appears in <code class="inline">Res1/input</code> on the Mac. Delete the test file after.
+</div>
+
+<h2 id="winB">6. <span class="machine-banner win">ON EACH WINDOWS PC</span> Part D — Install Python, Tesseract &amp; the script</h2>
+<p>This is the same software Team D used before the Mac was involved — it just now also knows how to call Qwen.</p>
+<div class="step">
+  <div class="step-title"><span class="step-num">1</span>Python 3</div>
+  <p>Install from <code class="inline">python.org</code> (tick "Add Python to PATH" during install). Confirm in PowerShell:</p>
+  <pre>python --version</pre>
+</div>
+<div class="step">
+  <div class="step-title"><span class="step-num">2</span>The script's Python packages</div>
+  <p>Put the project files (<code class="inline">invoice_boundary_detector.py</code>, <code class="inline">config.json</code>, <code class="inline">requirements.txt</code>) in a local folder, e.g. <code class="inline">C:\Users\&lt;you&gt;\Res1</code>, then:</p>
+  <pre>cd C:\Users\<you>\Res1
+pip install -r requirements.txt</pre>
+  <p><strong>What you should see:</strong> "Successfully installed…" with no red errors.</p>
+</div>
+<div class="step">
+  <div class="step-title"><span class="step-num">3</span>Tesseract (OCR fallback for scanned pages)</div>
+  <p>Install the Windows build of Tesseract (the UB-Mannheim installer is the common one). Note where it lands — usually <code class="inline">C:\Program Files\Tesseract-OCR\tesseract.exe</code>. <strong>Write that path down</strong> for <code class="inline">config.json</code>.</p>
+</div>
+<div class="note">
+  <strong>Why the script folder is separate from the Z: drive:</strong> the <em>script</em> lives locally on each Windows PC (<code class="inline">C:\…\Res1</code>), but the <em>PDFs and Excel</em> live on the shared <code class="inline">Z:</code> drive. Part E's <code class="inline">config.json</code> is what connects the two — it tells the local script to read/write files over on <code class="inline">Z:</code>.
+</div>
+
+<h2 id="winC">7. <span class="machine-banner win">ON EACH WINDOWS PC</span> Part E — Update config.json</h2>
+<p>Open <code class="inline">config.json</code> (in the local <code class="inline">C:\…\Res1</code> folder) in Notepad. Three things point it at the right places: the Tesseract path, the shared-folder paths, and the Mac's Qwen address.</p>
+
+<div class="code-label">Example config.json (Windows)</div>
+<pre>{
+  "tesseract_cmd": "C:\\Program Files\\Tesseract-OCR\\tesseract.exe",
+  "paths": {
+    "input_folder": "Z:\\input",
+    "output_folder": "Z:\\output\\reports",
+    "processed_folder": "Z:\\input\\_processed"
+  },
+  "llm": {
+    "enabled": true,
+    "host": "http://192.168.1.42:11434",
+    "text_model": "qwen2.5vl:7b",
+    "vision_model": "qwen2.5vl:7b",
+    "min_text_chars": 50,
+    "image_dpi": 150,
+    "timeout_seconds": 120,
+    "escalate_to_vision": true
+  }
+}</pre>
+<div class="note">
+  <strong>Fill in your real values:</strong> use the Mac's actual IP (or <code class="inline">http://Admins-Mac-mini.local:11434</code>) for <code class="inline">host</code>, and your real Tesseract path. The model name <strong>must be exactly <code class="inline">qwen2.5vl:7b</code></strong> — the ":7b" matters (leaving it off is what caused the "model not found" error during testing). Note the double backslashes <code class="inline">\\</code> in Windows paths — that's required in this kind of file.
+</div>
+<div class="tip">
+  <strong>When you add a second or third PC,</strong> the fastest path is to copy this exact <code class="inline">config.json</code> across — every value is identical between PCs, since they all point at the same <code class="inline">Z:</code> drive and the same Mac address. The only thing that could differ is the Tesseract path, if a PC installed it somewhere else.
+</div>
+
+<h2 id="winD">8. <span class="machine-banner win">ON EACH WINDOWS PC</span> Part F — First test run</h2>
+<div class="step">
+  <div class="step-title"><span class="step-num">1</span>Offline self-test first</div>
+  <pre>cd C:\Users\<you>\Res1
+python invoice_boundary_detector.py --selftest</pre>
+  <p><strong>Healthy result:</strong> every check reports <code class="inline">PASS</code>. This needs no network and doesn't touch Qwen — it just proves the install itself is sound.</p>
+</div>
+<div class="step">
+  <div class="step-title"><span class="step-num">2</span>Confirm the PC can reach Qwen on the Mac</div>
+  <p>In PowerShell:</p>
+  <pre>curl http://192.168.1.42:11434/api/tags</pre>
+  <p><strong>Healthy result:</strong> a JSON list showing <code class="inline">qwen2.5vl:7b</code>. If this fails but the Mac's own test in Part B worked, see the FAQ ("Windows can't reach Qwen").</p>
+</div>
+<div class="step">
+  <div class="step-title"><span class="step-num">3</span>A real small run</div>
+  <p>Drop 2–3 PDFs into <code class="inline">Z:\input</code>, then:</p>
+  <pre>python invoice_boundary_detector.py</pre>
+  <p><strong>Healthy result:</strong> progress prints per PDF, no Python "Traceback" error, and <code class="inline">Z:\output\reports\predictions.xlsx</code> updates. (The vendor logic that uses Qwen is the code work in Deliverable B — if that isn't finished yet, this run still proves the plumbing: files, network, and Qwen are all wired correctly.)</p>
+</div>
+
+<!-- ======================= ADD A PC ======================= -->
+<h2 id="addpc">9. Adding another Windows PC later (quick checklist)</h2>
+<p>Nothing on the Mac changes when you add a PC — the Mac work (Parts A &amp; B) is done once, for good. Adding PC #2 or #3 is just repeating the Windows parts:</p>
+<ul class="checklist">
+  <li>Map the Mac's shared folder as <code class="inline">Z:</code> (Part C)</li>
+  <li>Install Python 3 and <code class="inline">pip install -r requirements.txt</code> (Part D, steps 1–2)</li>
+  <li>Install Windows Tesseract (Part D, step 3)</li>
+  <li>Copy the same <code class="inline">config.json</code> onto this PC (Part E) — adjust the Tesseract path only if needed</li>
+  <li>Run <code class="inline">--selftest</code>, then the Qwen reachability check, then a small real run (Part F)</li>
+</ul>
+<div class="note"><strong>One shared report, many PCs.</strong> Because every PC reads and writes the same <code class="inline">predictions.xlsx</code> on <code class="inline">Z:</code>, avoid two people running the script at the exact same moment, and make sure nobody has the Excel file open in Excel while a run is writing to it (that causes a "permission denied" — see the FAQ).</div>
+
+<!-- ======================= FAQ ======================= -->
+<h2 id="faq">10. Troubleshooting FAQ</h2>
+
+<details class="faq">
+  <summary>Windows can't reach Qwen ("connection refused" or timeout on port 11434).</summary>
+  <p>Almost always the <code class="inline">OLLAMA_HOST</code> step (Mac Part B step 2) hasn't taken effect. On the Mac, confirm the network test there works (<code class="inline">curl http://&lt;mac-ip&gt;:11434/api/tags</code> using the IP, not localhost). If the Mac test works with the IP but Windows still can't reach it, check the Mac's Firewall (System Settings &rarr; Network &rarr; Firewall) isn't blocking incoming connections — either turn it off on a trusted office network, or allow Ollama through it. Also double-check both machines are on the same network.</p>
+</details>
+
+<details class="faq">
+  <summary>"model 'qwen2.5vl' not found."</summary>
+  <p>The model name is missing its tag. It must be written exactly <code class="inline">qwen2.5vl:7b</code> — with the <code class="inline">:7b</code> — everywhere: in the <code class="inline">curl</code> test and in <code class="inline">config.json</code>'s <code class="inline">text_model</code> / <code class="inline">vision_model</code>. Run <code class="inline">ollama list</code> on the Mac to see the exact name in the NAME column.</p>
+</details>
+
+<details class="faq">
+  <summary>Windows can't see the Mac's Z: drive at all.</summary>
+  <p>Confirm both computers are on the same network. On the Mac, re-check System Settings &rarr; General &rarr; Sharing &rarr; File Sharing is on. Try connecting with the Mac's IP address instead of its name (or vice versa) — sometimes one resolves when the other doesn't.</p>
+</details>
+
+<details class="faq">
+  <summary>The Z: drive or Qwen worked yesterday but is gone after a Mac restart.</summary>
+  <p>The Mac's IP address likely changed on reboot. This breaks both the drive and the Qwen address at once. Fix it properly with a DHCP reservation for the Mac (Mac Part A note), or use the Mac's <em>name</em> (<code class="inline">Admins-Mac-mini.local</code>) instead of the number in both the mapped drive and <code class="inline">config.json</code>'s <code class="inline">host</code>.</p>
+</details>
+
+<details class="faq">
+  <summary>"Permission denied" writing predictions.xlsx.</summary>
+  <p>Two common causes: (1) the Excel file is open in Excel on someone's PC — close it before running; (2) the Mac account's File Sharing permission on <code class="inline">Res1</code> reverted to Read Only — re-check Mac Part A step 3.</p>
+</details>
+
+<details class="faq">
+  <summary>The Mac went to sleep and runs started failing.</summary>
+  <p>A Mac acting as the office's AI + file host should stay awake and plugged in. System Settings &rarr; <strong>Lock Screen</strong> / <strong>Battery</strong> &rarr; prevent automatic sleeping while on power. If Ollama seems "asleep," reopening the Ollama app wakes it.</p>
+</details>
+
+<details class="faq">
+  <summary>Do I need an API key for Qwen?</summary>
+  <p>No — the local Qwen (via Ollama) has no keys at all. The fact that the test command answered without one is the proof. Anything asking you to "generate a Qwen API key" is the paid cloud service (Alibaba Cloud / DashScope), which would send client data off-site — don't use it.</p>
+</details>
+
+<!-- ======================= CLAUDE CONTEXT ======================= -->
+<h2 id="claude-context">11. What to tell Claude if you get stuck</h2>
+<p>If you open a fresh Claude Code session for help with any step, paste the block below first so it has the right context.</p>
+<div class="claude-context">
+<pre>I'm setting up an AI-assisted invoice-reading tool for a CPA firm (Team D).
+The design (revised 2026-08-04):
+
+- The Python script (invoice_boundary_detector.py) runs on WINDOWS PCs —
+  the whole team is Windows-only. 1 to 3 PCs will run it.
+- A MAC does only two jobs: (1) runs the local AI, Ollama with model
+  qwen2.5vl:7b, exposed on the office network at http://<mac-ip>:11434,
+  and (2) hosts a shared folder (Res1 with input/, input/_processed/,
+  output/reports/) via macOS File Sharing (SMB), mapped as Z: on Windows.
+- There are NO API keys — the local Qwen needs none. The cloud Qwen
+  (Alibaba/DashScope) is off-limits: client data must stay local.
+- I'm following the guide "2026-07-30_mac-windows-server-setup.html".
+  I'm currently on: [which Part/step, and what I'm seeing].
+
+Hard rules: never modify or delete original PDFs, no git commands
+(this project is local-only), ask before running anything destructive,
+and everything AI-related must stay local (no cloud AI services).
+
+Please help me with the step above.</pre>
+</div>
+
+<footer>
+  <p>This guide covers getting the Mac (AI + files) and the Windows PCs (the script) wired together and reachable. The vendor-detection code changes themselves (Deliverable B of the project plan) are separate work, verified against this setup once both are ready. Revised 2026-08-04: the script now runs on Windows, not the Mac.</p>
+</footer>
+
+</div>
+</body>
+</html>

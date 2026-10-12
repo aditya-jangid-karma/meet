@@ -1,0 +1,890 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>n8n Invoice Automation — Setup Guide (Team D)</title>
+<style>
+  :root {
+    --ink: #1f2933;
+    --sub-ink: #52606d;
+    --bg: #ffffff;
+    --panel: #f5f7fa;
+    --panel-border: #d9e2ec;
+    --accent: #1f5f8b;
+    --accent-soft: #e6f0f7;
+    --code-bg: #eef1f5;
+    --code-border: #cbd2d9;
+    --ok: #1b7a43;
+    --warn: #a15c00;
+    --path-a: #1f5f8b;
+    --path-b: #7a3ea1;
+  }
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0;
+    padding: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: "Segoe UI", Calibri, Arial, Helvetica, sans-serif;
+    line-height: 1.6;
+    font-size: 16px;
+  }
+  .wrap {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 32px 24px 80px 24px;
+  }
+  header.page-header {
+    border-bottom: 4px solid var(--accent);
+    padding-bottom: 20px;
+    margin-bottom: 28px;
+  }
+  header.page-header h1 {
+    margin: 0 0 8px 0;
+    font-size: 30px;
+    color: var(--ink);
+  }
+  header.page-header .subtitle {
+    color: var(--sub-ink);
+    font-size: 15px;
+  }
+  header.page-header .meta {
+    margin-top: 10px;
+    font-size: 13px;
+    color: var(--sub-ink);
+  }
+  h2 {
+    font-size: 22px;
+    color: var(--ink);
+    border-bottom: 2px solid var(--panel-border);
+    padding-bottom: 6px;
+    margin-top: 44px;
+    scroll-margin-top: 16px;
+  }
+  h3 {
+    font-size: 18px;
+    color: var(--ink);
+    margin-top: 30px;
+    scroll-margin-top: 16px;
+  }
+  h4 {
+    font-size: 15.5px;
+    color: var(--accent);
+    margin-top: 22px;
+    margin-bottom: 6px;
+  }
+  p { margin: 10px 0; }
+  a { color: var(--accent); }
+  ul, ol { padding-left: 26px; }
+  li { margin: 6px 0; }
+
+  .intro-box {
+    background: var(--accent-soft);
+    border: 1px solid var(--panel-border);
+    border-left: 5px solid var(--accent);
+    border-radius: 6px;
+    padding: 16px 18px;
+    margin: 18px 0;
+  }
+
+  nav.toc {
+    background: var(--panel);
+    border: 1px solid var(--panel-border);
+    border-radius: 8px;
+    padding: 16px 22px;
+    margin: 24px 0;
+  }
+  nav.toc h2 {
+    border: none;
+    margin: 0 0 8px 0;
+    font-size: 17px;
+    padding: 0;
+  }
+  nav.toc ol { margin: 0; padding-left: 22px; columns: 1; }
+  nav.toc li { margin: 4px 0; }
+  nav.toc a { text-decoration: none; }
+  nav.toc a:hover { text-decoration: underline; }
+
+  /* Checklists */
+  .checklist {
+    list-style: none;
+    padding-left: 0;
+  }
+  .checklist li {
+    padding: 10px 12px 10px 40px;
+    margin: 8px 0;
+    background: var(--panel);
+    border: 1px solid var(--panel-border);
+    border-radius: 6px;
+    position: relative;
+  }
+  .checklist li::before {
+    content: "\2610";
+    position: absolute;
+    left: 12px;
+    top: 9px;
+    font-size: 18px;
+    color: var(--accent);
+  }
+
+  /* Glossary */
+  dl.glossary dt {
+    font-weight: 600;
+    color: var(--ink);
+    margin-top: 14px;
+  }
+  dl.glossary dd {
+    margin: 4px 0 0 0;
+    color: var(--sub-ink);
+  }
+
+  /* Tables */
+  .table-scroll {
+    overflow-x: auto;
+    margin: 16px 0;
+    border: 1px solid var(--panel-border);
+    border-radius: 6px;
+  }
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    min-width: 640px;
+    font-size: 14.5px;
+  }
+  table caption {
+    text-align: left;
+    font-size: 13px;
+    color: var(--sub-ink);
+    padding: 6px 10px;
+  }
+  th, td {
+    border: 1px solid var(--panel-border);
+    padding: 9px 12px;
+    text-align: left;
+    vertical-align: top;
+  }
+  th {
+    background: var(--accent);
+    color: #ffffff;
+    font-weight: 600;
+    position: sticky;
+    top: 0;
+  }
+  tr:nth-child(even) td {
+    background: var(--panel);
+  }
+
+  /* Code / prompt boxes */
+  pre, code {
+    font-family: Consolas, "Courier New", monospace;
+  }
+  pre {
+    background: var(--code-bg);
+    border: 1px solid var(--code-border);
+    border-radius: 6px;
+    padding: 14px 16px;
+    overflow-x: auto;
+    white-space: pre;
+    font-size: 13.5px;
+    line-height: 1.5;
+    margin: 12px 0;
+  }
+  code.inline {
+    background: var(--code-bg);
+    border: 1px solid var(--code-border);
+    border-radius: 4px;
+    padding: 1px 6px;
+    font-size: 13.5px;
+    word-break: break-word;
+  }
+  .code-label {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--sub-ink);
+    margin: 14px 0 -4px 0;
+    font-weight: 600;
+  }
+
+  /* Node cards */
+  .node {
+    border: 1px solid var(--panel-border);
+    border-left: 5px solid var(--accent);
+    border-radius: 6px;
+    padding: 14px 18px;
+    margin: 18px 0;
+    background: #fff;
+  }
+  .node.pathB { border-left-color: var(--path-b); }
+  .node .node-title {
+    font-weight: 700;
+    font-size: 16px;
+    color: var(--ink);
+    margin-bottom: 2px;
+  }
+  .node .node-type {
+    font-size: 13px;
+    color: var(--sub-ink);
+    margin-bottom: 10px;
+  }
+  .node .node-type code.inline { background: var(--accent-soft); }
+  .node table { font-size: 14px; }
+  .node table th { background: #eef3f8; color: var(--ink); }
+  .pathB .node table th { background: #f2eaf7; }
+
+  .path-banner {
+    display: inline-block;
+    font-weight: 700;
+    font-size: 13px;
+    color: #fff;
+    padding: 4px 12px;
+    border-radius: 20px;
+    margin-bottom: 6px;
+  }
+  .path-banner.a { background: var(--path-a); }
+  .path-banner.b { background: var(--path-b); }
+
+  .note {
+    background: #fff8e6;
+    border: 1px solid #f0dca0;
+    border-left: 5px solid var(--warn);
+    border-radius: 6px;
+    padding: 10px 16px;
+    margin: 14px 0;
+    font-size: 14.5px;
+  }
+  .note strong { color: var(--warn); }
+
+  .privacy-note {
+    background: #fdeeee;
+    border: 1px solid #f0b8b8;
+    border-left: 5px solid #b23b3b;
+    border-radius: 6px;
+    padding: 10px 16px;
+    margin: 12px 0;
+    font-size: 14.5px;
+  }
+  .privacy-note strong { color: #b23b3b; }
+
+  .tip {
+    background: #eafaf0;
+    border: 1px solid #b9e6c8;
+    border-left: 5px solid var(--ok);
+    border-radius: 6px;
+    padding: 10px 16px;
+    margin: 12px 0;
+    font-size: 14.5px;
+  }
+  .tip strong { color: var(--ok); }
+
+  .recommend-box {
+    background: var(--accent-soft);
+    border: 2px solid var(--accent);
+    border-radius: 8px;
+    padding: 18px 22px;
+    margin: 18px 0;
+  }
+
+  details.faq {
+    border: 1px solid var(--panel-border);
+    border-radius: 6px;
+    margin: 10px 0;
+    padding: 6px 14px;
+    background: var(--panel);
+  }
+  details.faq summary {
+    cursor: pointer;
+    font-weight: 600;
+    padding: 8px 0;
+    color: var(--ink);
+  }
+  details.faq[open] summary { color: var(--accent); }
+  details.faq p { margin: 6px 0 12px 0; }
+
+  footer {
+    margin-top: 60px;
+    padding-top: 16px;
+    border-top: 1px solid var(--panel-border);
+    font-size: 13px;
+    color: var(--sub-ink);
+  }
+
+  .step-num {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: var(--accent);
+    color: #fff;
+    font-size: 13px;
+    font-weight: 700;
+    margin-right: 8px;
+  }
+
+  @media (max-width: 600px) {
+    .wrap { padding: 20px 14px 60px 14px; }
+    header.page-header h1 { font-size: 24px; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="page-header">
+  <h1>Setting Up an n8n Workflow to Read Invoice PDFs and Extract Vendor + Invoice Info</h1>
+  <p class="subtitle">A step-by-step, plain-English setup guide for Team D (Puneet, Dhruv, Manish, Vijayesh)</p>
+  <p class="meta">Written: 2026-07-27 &nbsp;|&nbsp; For: monthly close automation &nbsp;|&nbsp; Level: no coding background required</p>
+</header>
+
+<div class="intro-box">
+  <p><strong>What this workflow does:</strong> You point it at a folder of invoice PDFs (the kind you already have — utility bills, supply invoices, vendor bills). It automatically opens each PDF, figures out where one invoice ends and the next begins, works out <strong>who the vendor is</strong> (the company that <em>sent</em> the invoice, not the property being billed), pulls out the invoice number, date, and amount, and writes one summary row per invoice into a spreadsheet (like your <code class="inline">predictions.xlsx</code> file) — without anyone retyping anything by hand.</p>
+  <p>This guide documents <strong>two different ways to build it</strong> inside a tool called n8n (pronounced "n-eight-n"). <strong>Path A</strong> reads the text that is already hidden inside your PDFs and hands that text to an AI model to interpret. <strong>Path B</strong> skips the text-reading step and instead shows a picture of each page to a "vision" AI model that can read and understand images directly. Both paths end with the same result: a clean row per invoice in your spreadsheet.</p>
+</div>
+
+<nav class="toc" aria-label="Table of contents">
+  <h2>Contents</h2>
+  <ol>
+    <li><a href="#prereqs">What you'll need (prerequisites)</a></li>
+    <li><a href="#glossary">Glossary — key terms explained</a></li>
+    <li><a href="#comparison">Path A vs. Path B — comparison table</a></li>
+    <li><a href="#patha">Path A — OCR / Text → LLM (two-stage)</a></li>
+    <li><a href="#pathb">Path B — Straight to the Vision LLM (one-stage)</a></li>
+    <li><a href="#recommendation">Which should Team D pick?</a></li>
+    <li><a href="#testing">Testing &amp; verification tips</a></li>
+    <li><a href="#faq">Troubleshooting mini-FAQ</a></li>
+  </ol>
+</nav>
+
+<!-- ======================= PREREQUISITES ======================= -->
+<h2 id="prereqs">1. What you'll need (prerequisites)</h2>
+<p>Before touching either path, get these four things set up. Everything below is free and runs on a normal Windows laptop (a GPU helps speed things up but is not required to get started).</p>
+
+<h3>1.1 n8n — the workflow builder itself</h3>
+<p><strong>n8n</strong> is the app you'll build the automation in. Think of it like a flowchart builder: you drag boxes ("nodes") onto a canvas, connect them with arrows, and each box does one job (read a file, ask an AI a question, write a spreadsheet row). "Self-hosted" means it runs on your own computer/server instead of a paid cloud service — important for privacy, since invoice data never has to leave your machine.</p>
+<p>Pick <strong>one</strong> of these two ways to run it:</p>
+
+<div class="table-scroll">
+<table>
+<thead><tr><th style="width:22%">Option</th><th>What to install / type</th><th>Why you'd choose it</th></tr></thead>
+<tbody>
+<tr>
+  <td><strong>Docker Desktop</strong> (recommended)</td>
+  <td>
+    1. Install <strong>Docker Desktop</strong> for Windows from docker.com and open it once so it's running.<br>
+    2. Open PowerShell and run:
+    <pre>docker run -it --rm --name n8n -p 5678:5678 -v n8n_data:/home/node/.n8n docker.n8n.io/n8nio/n8n</pre>
+    3. Open a browser to <code class="inline">http://localhost:5678</code>
+  </td>
+  <td>Keeps n8n cleanly boxed off ("containerized") from the rest of Windows. Easiest to update or remove later. Best choice if you'll keep this running long-term.</td>
+</tr>
+<tr>
+  <td><strong>npx n8n</strong> (quick / no Docker)</td>
+  <td>
+    1. Install <strong>Node.js</strong> (LTS version) from nodejs.org.<br>
+    2. Open PowerShell and run:
+    <pre>npx n8n</pre>
+    3. It will print a local address, usually <code class="inline">http://localhost:5678</code>
+  </td>
+  <td>Fastest way to try n8n today with the fewest installs. Fine for testing; Docker is nicer for something you'll rely on every month.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><em>Either way, "self-hosted" is what keeps this private — your PDFs and the text/images inside them stay on your own PC and are never uploaded to n8n's company or anyone else's cloud service.</em></p>
+
+<h3>1.2 Ollama — for running an AI model locally, for free, privately</h3>
+<p><strong>Ollama</strong> is a small free program that lets you download and run AI language models directly on your own computer, instead of calling out to a paid service like ChatGPT. This is the key to keeping client financial data private.</p>
+<ol>
+  <li>Download and install Ollama from <code class="inline">ollama.com</code> (Windows installer, click-through, no special settings needed).</li>
+  <li>Open PowerShell and download ("pull") a model. For Path A (text only), a good general-purpose starting model is:
+    <pre>ollama pull llama3.1:8b</pre>
+  </li>
+  <li>For Path B (vision/images), pull a vision-capable model instead, for example:
+    <pre>ollama pull llama3.2-vision</pre>
+  </li>
+  <li>Leave Ollama running in the background (it starts automatically after install and listens on <code class="inline">http://localhost:11434</code>). n8n will talk to it at that address.</li>
+</ol>
+<div class="note"><strong>Hardware note:</strong> An 8-billion-parameter model like <code class="inline">llama3.1:8b</code> runs comfortably on most modern laptops (16 GB RAM is plenty). Vision models are bigger and slower on a laptop without a dedicated GPU — see the comparison table below.</div>
+
+<h3>1.3 A place to write the output — Google Sheets or Microsoft Excel</h3>
+<ul>
+  <li><strong>Google Sheets:</strong> Free Google account, a spreadsheet created ahead of time with column headers (e.g., File, Vendor, Invoice Number, Invoice Date, Amount). n8n connects via a Google "credential" (see glossary) that you set up once.</li>
+  <li><strong>Microsoft Excel:</strong> You can keep using your existing <code class="inline">predictions.xlsx</code> file. n8n's Microsoft Excel node can connect to Excel Online (OneDrive/SharePoint) via a Microsoft credential, or you can use a local "Read/Write Files from Disk" + a Code node to append rows to a local .xlsx file.</li>
+</ul>
+
+<h3>1.4 The folder of invoice PDFs</h3>
+<p>Have a folder ready on your computer, for example <code class="inline">C:\Users\Puneet\Desktop\invoices\</code>, with the PDFs you want processed. This is the folder n8n will "watch" or read from.</p>
+
+<h3>Prerequisites checklist</h3>
+<ul class="checklist">
+  <li>n8n installed and reachable in a browser (Docker Desktop <em>or</em> <code class="inline">npx n8n</code>)</li>
+  <li>Ollama installed and running (<code class="inline">http://localhost:11434</code>)</li>
+  <li>At least one text model pulled (e.g. <code class="inline">llama3.1:8b</code>) for Path A</li>
+  <li>At least one vision model pulled (e.g. <code class="inline">llama3.2-vision</code>) for Path B — only needed if you're building Path B</li>
+  <li>A Google Sheet or Excel file ready to receive rows, with column headers already typed in</li>
+  <li>A folder of invoice PDFs to test against</li>
+</ul>
+
+<!-- ======================= GLOSSARY ======================= -->
+<h2 id="glossary">2. Glossary — key terms explained</h2>
+<dl class="glossary">
+  <dt>n8n</dt>
+  <dd>The workflow-automation app this whole guide is about. You build automations visually by connecting "nodes" on a canvas.</dd>
+
+  <dt>Node</dt>
+  <dd>One box/step in an n8n workflow. Each node does one specific job — e.g., "read a file," "call an AI model," "add a row to a spreadsheet." You connect nodes in order with arrows to build the full process.</dd>
+
+  <dt>Trigger</dt>
+  <dd>The special first node that starts the workflow. It answers the question "when should this run?" — e.g., "whenever a new PDF appears in this folder" or "whenever I click a Test button."</dd>
+
+  <dt>Credential</dt>
+  <dd>A saved, securely-stored login/connection (like your Google account or Microsoft account) that n8n reuses so you don't have to log in every time a workflow runs. n8n stores these encrypted; you set them up once per account.</dd>
+
+  <dt>Ollama</dt>
+  <dd>Free software that runs AI language models directly on your own computer (instead of over the internet). This is what makes a fully private, local setup possible.</dd>
+
+  <dt>Model</dt>
+  <dd>The actual AI "brain" that reads text or images and produces an answer. Different models trade off speed, accuracy, and size (e.g., <code class="inline">llama3.1:8b</code> is smaller/faster, others are bigger/smarter but slower).</dd>
+
+  <dt>LLM (Large Language Model)</dt>
+  <dd>The general category of AI model used here — trained on huge amounts of text so it can read a document and answer questions about it in plain language, or return structured data like JSON.</dd>
+
+  <dt>Vision model</dt>
+  <dd>A special kind of LLM that can look at an <em>image</em> (like a photo of an invoice page) and understand both the picture and any text in it at the same time, without a separate text-extraction step.</dd>
+
+  <dt>JSON</dt>
+  <dd>("JavaScript Object Notation") — a simple, structured way to write data as labeled fields, e.g. <code class="inline">{"vendor": "Staples", "amount": 214.50}</code>. We ask the AI model to answer in this format so n8n can read the fields reliably instead of parsing loose sentences.</dd>
+
+  <dt>OCR (Optical Character Recognition)</dt>
+  <dd>Software that looks at a picture of text (like a scanned or photographed page) and converts it into actual, selectable/searchable text. Only needed when a PDF is an image of a document rather than a "real" digital document with embedded text.</dd>
+
+  <dt>Digital PDF vs. scanned PDF</dt>
+  <dd>A <strong>digital PDF</strong> was created directly from a computer document (e.g., exported from an accounting system) and already contains real, selectable text you can highlight and copy. A <strong>scanned PDF</strong> is essentially a photograph of a paper page — it looks like text but is really just an image, so a computer can't read it directly without OCR. Most of Team D's invoices are digital PDFs already, which is why Path A usually works without any OCR at all.</dd>
+
+  <dt>Docker</dt>
+  <dd>A tool that runs an application (like n8n) in a self-contained "box" (called a container) so it doesn't clutter or conflict with the rest of your Windows setup, and can be easily started, stopped, or removed.</dd>
+</dl>
+
+<!-- ======================= COMPARISON TABLE ======================= -->
+<h2 id="comparison">3. Path A vs. Path B — comparison table</h2>
+<p>Both paths produce the same output (a row per invoice with vendor, invoice number, date, amount). They differ in <em>how</em> they get there.</p>
+<div class="table-scroll">
+<table>
+<thead>
+<tr>
+  <th>Factor</th>
+  <th>Path A — Text → LLM (two-stage)</th>
+  <th>Path B — Vision LLM (one-stage)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>How it works</td>
+  <td>Pulls the real, embedded text out of the PDF first (or OCRs it if scanned), then sends that <em>text</em> to a language model to interpret.</td>
+  <td>Converts each page to an image and sends the <em>picture</em> directly to a vision-capable model, which reads and interprets in one step.</td>
+</tr>
+<tr>
+  <td>Accuracy on your PDFs today</td>
+  <td>Very high — your invoices are almost all digital PDFs with clean embedded text, so extraction is exact (no guessing).</td>
+  <td>Good to very high, but reading text out of an image is inherently a little less certain than reading real embedded text — the model is "eyeballing" characters.</td>
+</tr>
+<tr>
+  <td>Speed</td>
+  <td>Fast. Reading embedded text is close to instant; the text model only has to read a page or two of plain text.</td>
+  <td>Slower. Converting pages to images and running a vision model takes noticeably more time and computing power per page.</td>
+</tr>
+<tr>
+  <td>Hardware needed (local)</td>
+  <td>Light. A normal laptop handles an 8B text model comfortably.</td>
+  <td>Heavier. Vision models are larger; without a decent GPU, expect slow responses (many seconds to a minute+ per page).</td>
+</tr>
+<tr>
+  <td>Works on scanned / photographed invoices?</td>
+  <td>Only with an added OCR step (extra node) — otherwise there's no text to read.</td>
+  <td>Yes, natively — this is the main advantage of Path B. The model reads the image regardless of whether it's a "real" digital PDF or a scan.</td>
+</tr>
+<tr>
+  <td>Complexity to build</td>
+  <td>A bit more plumbing (extraction node + OCR fallback branch), but each piece is simple and predictable.</td>
+  <td>Fewer nodes overall (one AI step does the reading and understanding), but each node is heavier and slower to run/test.</td>
+</tr>
+<tr>
+  <td>Best when&hellip;</td>
+  <td>Your PDFs already contain real text (this is Team D's situation today) and you want speed + low hardware needs.</td>
+  <td>You start receiving scanned/photographed invoices, or you want a single simpler-looking pipeline and don't mind the extra runtime/hardware cost.</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<!-- ======================= PATH A ======================= -->
+<h2 id="patha"><span class="path-banner a">PATH A</span><br>OCR / Text &rarr; LLM (two-stage)</h2>
+<p>Path A has two AI-adjacent stages: first pull out the real text from the PDF (fast, free, no AI needed for digital PDFs), <em>then</em> hand that plain text to a language model to interpret it into structured fields. Below is every node you'll add, in order, left to right on the n8n canvas.</p>
+
+<h3>A-1. Trigger node(s)</h3>
+<div class="node">
+  <div class="node-title">Node: "When clicking 'Test workflow'"</div>
+  <div class="node-type">Type: <code class="inline">Manual Trigger</code></div>
+  <p><strong>Purpose:</strong> Lets you run the workflow on demand by clicking a button in n8n, so you can test each node as you build it, without waiting for a real new file.</p>
+  <p><strong>Settings:</strong> None to configure — just drag it onto the canvas as your starting point while building and testing.</p>
+</div>
+<div class="node">
+  <div class="node-title">Node: "Watch Invoice Folder"</div>
+  <div class="node-type">Type: <code class="inline">Local File Trigger</code></div>
+  <p><strong>Purpose:</strong> Once you're happy with the workflow, swap in (or add alongside) this trigger so the workflow runs automatically whenever a new PDF is dropped into your invoices folder — no manual clicking needed.</p>
+  <div class="table-scroll">
+  <table>
+    <thead><tr><th>Setting</th><th>What to enter</th></tr></thead>
+    <tbody>
+      <tr><td>Trigger On</td><td><code class="inline">File Added</code> (fires when a new file appears)</td></tr>
+      <tr><td>Path to Watch</td><td><code class="inline">C:\Users\Puneet\Desktop\invoices</code> (your real folder path)</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p><em>Tip: keep the Manual Trigger connected too while you're building — right-click it and choose "Execute Node" to test without waiting for a real file.</em></p>
+</div>
+
+<h3>A-2. Read the PDF file</h3>
+<div class="node">
+  <div class="node-title">Node: "Read Invoice File"</div>
+  <div class="node-type">Type: <code class="inline">Read/Write Files from Disk</code></div>
+  <p><strong>Purpose:</strong> Loads the actual PDF file into the workflow as binary data (a raw file) so the next node can look inside it.</p>
+  <div class="table-scroll">
+  <table>
+    <thead><tr><th>Setting</th><th>What to enter</th></tr></thead>
+    <tbody>
+      <tr><td>Operation</td><td><code class="inline">Read File(s) From Disk</code></td></tr>
+      <tr><td>File(s) Selector</td><td><code class="inline">{{ $json.path }}</code> — this automatically uses the file path that the trigger just detected</td></tr>
+    </tbody>
+  </table>
+  </div>
+</div>
+
+<h3>A-3. Extract the text (digital PDFs)</h3>
+<div class="node">
+  <div class="node-title">Node: "Extract PDF Text"</div>
+  <div class="node-type">Type: <code class="inline">Extract from File</code></div>
+  <p><strong>Purpose:</strong> Pulls the real, embedded text straight out of a digital PDF — this is the fast, exact path that works for almost all of Team D's invoices, with no AI involved yet.</p>
+  <div class="table-scroll">
+  <table>
+    <thead><tr><th>Setting</th><th>What to enter</th></tr></thead>
+    <tbody>
+      <tr><td>Operation</td><td><code class="inline">Extract from PDF</code></td></tr>
+      <tr><td>Input Binary Field</td><td><code class="inline">data</code> (the default field name holding the file from the previous node)</td></tr>
+      <tr><td>Output field</td><td>leave as default, e.g. <code class="inline">text</code> — this is where the extracted text lands</td></tr>
+    </tbody>
+  </table>
+  </div>
+</div>
+
+<div class="note">
+<strong>OCR fallback (only for scanned/photographed invoices):</strong> If a PDF has no embedded text (the "Extract from File" node returns empty or near-empty text), add a branch here using an <strong>IF node</strong> that checks "is the extracted text shorter than, say, 20 characters?" If yes, route that PDF to an OCR step before continuing.
+</div>
+<div class="node">
+  <div class="node-title">Node: "OCR Fallback"</div>
+  <div class="node-type">Type: <code class="inline">Execute Command</code></div>
+  <p><strong>Purpose:</strong> Runs a command-line OCR tool on scanned PDFs to convert the picture of text into real text. Only triggers for the rare scanned invoice.</p>
+  <div class="table-scroll">
+  <table>
+    <thead><tr><th>Setting</th><th>What to enter</th></tr></thead>
+    <tbody>
+      <tr><td>Command</td><td><code class="inline">ocrmypdf {{ $json.path }} {{ $json.path }}_ocr.pdf --force-ocr</code></td></tr>
+      <tr><td>Notes</td><td>Requires <strong>OCRmyPDF</strong> (which uses <strong>Tesseract</strong> underneath) installed separately on the machine running n8n. An alternative engine is <strong>PaddleOCR</strong> if you need better handling of tricky layouts.</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p>After this node, re-run the "Extract PDF Text" node on the new OCR'd file so the rest of the workflow (from A-4 onward) is identical for both digital and scanned invoices.</p>
+</div>
+
+<h3>A-4. Ask the local LLM to read the text and return structured data</h3>
+<div class="node">
+  <div class="node-title">Node: "Interpret Invoice Text"</div>
+  <div class="node-type">Type: <code class="inline">Basic LLM Chain</code> (from the LangChain node group) connected to an <code class="inline">Ollama Chat Model</code> sub-node</div>
+  <p><strong>Purpose:</strong> This is the "smart" step — it reads the plain text you just extracted and figures out the vendor, whether this page starts a new invoice, the invoice number, date, and amount. It returns its answer as JSON (see glossary) so the next node can read each field precisely.</p>
+  <div class="table-scroll">
+  <table>
+    <thead><tr><th>Setting</th><th>What to enter</th></tr></thead>
+    <tbody>
+      <tr><td>Chat Model (sub-node)</td><td><code class="inline">Ollama Chat Model</code> &rarr; Base URL: <code class="inline">http://localhost:11434</code> &rarr; Model: <code class="inline">llama3.1:8b</code></td></tr>
+      <tr><td>Prompt Type</td><td><code class="inline">Define below</code></td></tr>
+      <tr><td>Text (input to the model)</td><td><code class="inline">{{ $json.text }}</code> (the extracted invoice text from node A-3)</td></tr>
+      <tr><td>System Message</td><td>see prompt box below</td></tr>
+      <tr><td>Require Specific Output Format</td><td>Turn ON "Require Specific Output Format" / attach a JSON Output Parser if available in your n8n version, so the reply is forced into valid JSON</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="code-label">Example prompt to put in the System Message field</div>
+  <pre>You are an assistant that reads invoice text and extracts structured
+information for a bookkeeping team.
+
+IMPORTANT: The "vendor" is the company that ISSUED and is SENDING the
+invoice (the seller demanding payment) — for example Staples, Quill,
+Chadwell Supply, Ferguson, Cockey's Enterprises, Summit Fire & Security,
+Happy Summers, L&C Pest Management, Constellation NewEnergy, Sharp
+Business Systems, or RMS Contractors. The vendor is USUALLY the name/logo
+printed at the very top of the page or in a "remit to" box. Do NOT
+confuse the vendor with the CUSTOMER being billed (the property name,
+apartment community, or "bill to" company) — that is a different field.
+
+Read the invoice text below and respond with ONLY valid JSON, no extra
+words, matching exactly this shape:
+
+{
+  "vendor": "string - who issued/sent this invoice",
+  "is_new_invoice": true,
+  "invoice_number": "string or null",
+  "invoice_date": "YYYY-MM-DD or null",
+  "amount": 0.00,
+  "billed_to": "string - the customer/property being billed, or null"
+}
+
+Invoice text:
+{{ $json.text }}</pre>
+
+  <div class="code-label">Example JSON the model should return</div>
+  <pre>{
+  "vendor": "Chadwell Supply",
+  "is_new_invoice": true,
+  "invoice_number": "INV-88213",
+  "invoice_date": "2026-05-14",
+  "amount": 214.50,
+  "billed_to": "Friendly Garden Apartments"
+}</pre>
+
+  <div class="privacy-note">
+  <strong>Privacy trade-off:</strong> Using the <code class="inline">Ollama Chat Model</code> as configured above keeps everything local — the invoice text never leaves this computer. If you instead swap the sub-node for a <strong>cloud model</strong> (e.g., an OpenAI or Anthropic Chat Model node), you may get somewhat higher accuracy on messy/unusual invoices, but the extracted invoice text — which is client financial data — is sent over the internet to that provider. For Team D's client data, default to the local Ollama option unless a specific case truly needs the cloud model, and get sign-off first.
+  </div>
+</div>
+
+<h3>A-5. Parse and validate the JSON</h3>
+<div class="node">
+  <div class="node-title">Node: "Parse &amp; Validate JSON"</div>
+  <div class="node-type">Type: <code class="inline">Code</code> node (JavaScript) — or a simpler <code class="inline">Set</code> node if your n8n version auto-parses the LLM output</div>
+  <p><strong>Purpose:</strong> Safety net. The LLM should return clean JSON, but occasionally it adds stray words or gets a field wrong. This node checks the JSON is valid and that required fields (vendor, amount) aren't empty, and flags anything suspicious instead of silently writing a bad row.</p>
+  <div class="code-label">Example Code node content</div>
+  <pre>const raw = $input.item.json.text || $input.item.json.output;
+let data;
+try {
+  data = JSON.parse(raw);
+} catch (e) {
+  return [{ json: { error: "Could not parse JSON from model", raw } }];
+}
+
+if (!data.vendor || data.amount === undefined) {
+  data._flag = "Missing vendor or amount — needs manual review";
+}
+
+return [{ json: data }];</pre>
+</div>
+
+<h3>A-6. Write the row to the spreadsheet</h3>
+<div class="node">
+  <div class="node-title">Node: "Append to predictions.xlsx" (or "Append to Google Sheet")</div>
+  <div class="node-type">Type: <code class="inline">Microsoft Excel 365</code> node, or <code class="inline">Google Sheets</code> node</div>
+  <p><strong>Purpose:</strong> Adds one new row per invoice to your tracking spreadsheet, mapping each JSON field to its own column.</p>
+  <div class="table-scroll">
+  <table>
+    <thead><tr><th>Setting</th><th>What to enter</th></tr></thead>
+    <tbody>
+      <tr><td>Credential</td><td>Your Google account or Microsoft account (set up once via "Add Credential" — you'll log in through a popup and n8n stores the connection securely)</td></tr>
+      <tr><td>Operation</td><td><code class="inline">Append Row</code></td></tr>
+      <tr><td>Spreadsheet / File</td><td>Select your <code class="inline">predictions.xlsx</code> file or Google Sheet from the dropdown</td></tr>
+      <tr><td>Sheet/Tab</td><td>e.g. <code class="inline">Sheet1</code></td></tr>
+      <tr><td>Column mapping</td><td>Vendor &rarr; <code class="inline">{{ $json.vendor }}</code>, Invoice Number &rarr; <code class="inline">{{ $json.invoice_number }}</code>, Date &rarr; <code class="inline">{{ $json.invoice_date }}</code>, Amount &rarr; <code class="inline">{{ $json.amount }}</code>, Billed To &rarr; <code class="inline">{{ $json.billed_to }}</code></td></tr>
+    </tbody>
+  </table>
+  </div>
+</div>
+
+<h3>A-7. (Optional) Notification node</h3>
+<div class="node">
+  <div class="node-title">Node: "Notify Team"</div>
+  <div class="node-type">Type: <code class="inline">Send Email</code>, <code class="inline">Slack</code>, or <code class="inline">Desktop Notification</code> (via a small script) node</div>
+  <p><strong>Purpose:</strong> Optional last step — pings you (or flags in a channel) when a new invoice has been processed, or specifically when the "_flag" field from A-5 shows something needs manual review.</p>
+  <div class="table-scroll">
+  <table>
+    <thead><tr><th>Setting</th><th>What to enter</th></tr></thead>
+    <tbody>
+      <tr><td>To</td><td>e.g. <code class="inline">puneet.365kpo@gmail.com</code></td></tr>
+      <tr><td>Subject</td><td><code class="inline">Invoice processed: {{ $json.vendor }} — {{ $json.invoice_number }}</code></td></tr>
+      <tr><td>Only send when...</td><td>Add an IF node before this so it only fires if <code class="inline">$json._flag</code> exists (needs review) — otherwise you'd get an email for every single normal invoice, which gets noisy fast.</td></tr>
+    </tbody>
+  </table>
+  </div>
+</div>
+
+<!-- ======================= PATH B ======================= -->
+<h2 id="pathb"><span class="path-banner b">PATH B</span><br>Straight to the LLM (vision) — one-stage</h2>
+<p>Path B skips separately extracting text. Instead, each invoice page is turned into an image, and a <strong>vision model</strong> looks at the picture directly — reading the text and understanding the layout (logos, "remit to" boxes, tables) in one step, the same way a person would glance at the page.</p>
+
+<h3>B-1. Trigger node(s)</h3>
+<div class="node pathB">
+  <div class="node-title">Node: "When clicking 'Test workflow'" + "Watch Invoice Folder"</div>
+  <div class="node-type">Type: <code class="inline">Manual Trigger</code> and <code class="inline">Local File Trigger</code></div>
+  <p><strong>Purpose:</strong> Identical to Path A step A-1 — one trigger for manual testing, one for automatically picking up new PDFs dropped into your invoices folder. Configure exactly the same way (see A-1 above).</p>
+</div>
+
+<h3>B-2. Read the PDF and convert pages to images</h3>
+<div class="node pathB">
+  <div class="node-title">Node: "Read Invoice File"</div>
+  <div class="node-type">Type: <code class="inline">Read/Write Files from Disk</code></div>
+  <p><strong>Purpose:</strong> Same as A-2 — loads the PDF file as binary data. Configure the same way.</p>
+</div>
+<div class="node pathB">
+  <div class="node-title">Node: "Convert PDF Pages to Images"</div>
+  <div class="node-type">Type: <code class="inline">Execute Command</code></div>
+  <p><strong>Purpose:</strong> Most vision models expect an <strong>image</strong> (like a PNG or JPG), not a raw PDF file. This node turns each page of the PDF into its own image file so the vision model can "look" at it.</p>
+  <div class="table-scroll">
+  <table>
+    <thead><tr><th>Setting</th><th>What to enter</th></tr></thead>
+    <tbody>
+      <tr><td>Command (using Poppler's pdftoppm)</td><td><code class="inline">pdftoppm -png -r 200 {{ $json.path }} {{ $json.path }}_page</code></td></tr>
+      <tr><td>Alternative</td><td>A small <strong>Python</strong> script using the <strong>PyMuPDF</strong> library run via Execute Command can do the same conversion with more control over image size/quality.</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p><em>Note: this step is only needed if your chosen vision model requires images. Some newer model/n8n integrations can accept a PDF file directly — check your model's documentation; if it accepts PDFs natively, you can skip straight from B-2's file-read to the vision node in B-3.</em></p>
+</div>
+<div class="node pathB">
+  <div class="node-title">Node: "Read Image File"</div>
+  <div class="node-type">Type: <code class="inline">Read/Write Files from Disk</code></div>
+  <p><strong>Purpose:</strong> Loads each generated page image back into the workflow as binary data so it can be attached to the vision model call.</p>
+  <div class="table-scroll">
+  <table>
+    <thead><tr><th>Setting</th><th>What to enter</th></tr></thead>
+    <tbody>
+      <tr><td>Operation</td><td><code class="inline">Read File(s) From Disk</code></td></tr>
+      <tr><td>File(s) Selector</td><td><code class="inline">{{ $json.path }}_page-1.png</code> (adjust per page — use a Loop node if a PDF has multiple pages/invoices)</td></tr>
+    </tbody>
+  </table>
+  </div>
+</div>
+
+<h3>B-3. Ask the vision LLM to read the page image directly</h3>
+<div class="node pathB">
+  <div class="node-title">Node: "Interpret Invoice Image"</div>
+  <div class="node-type">Type: <code class="inline">HTTP Request</code> node calling Ollama's API directly (most reliable way to send images today), or the <code class="inline">Basic LLM Chain</code> node if your n8n version's Ollama integration supports image inputs</div>
+  <p><strong>Purpose:</strong> The core of Path B — sends the page image to a vision-capable model that reads the text on the page <em>and</em> understands the visual layout (logo position, remit-to box, table structure) at the same time, then returns the same structured JSON as Path A.</p>
+  <div class="table-scroll">
+  <table>
+    <thead><tr><th>Setting</th><th>What to enter</th></tr></thead>
+    <tbody>
+      <tr><td>Method</td><td><code class="inline">POST</code></td></tr>
+      <tr><td>URL</td><td><code class="inline">http://localhost:11434/api/generate</code></td></tr>
+      <tr><td>Body &rarr; model</td><td><code class="inline">llama3.2-vision</code> (local options also include <code class="inline">qwen2-vl</code> and <code class="inline">minicpm-v</code> — pull whichever with <code class="inline">ollama pull &lt;model&gt;</code>)</td></tr>
+      <tr><td>Body &rarr; images</td><td>The page image, base64-encoded (n8n's HTTP Request node can convert the binary file field automatically — set the body field type to binary/base64 and point it at the image from B-2)</td></tr>
+      <tr><td>Body &rarr; prompt</td><td>see prompt box below</td></tr>
+      <tr><td>Body &rarr; format</td><td><code class="inline">json</code> (tells Ollama to constrain its answer to valid JSON)</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="code-label">Example vision prompt</div>
+  <pre>Look at this invoice page image. Identify who SENT this invoice (the
+vendor/seller — usually shown as a logo or company name at the very top
+of the page, or in a "remit to" box), not the company being billed.
+
+Known example vendors this team works with include: Staples, Quill,
+Chadwell Supply, Ferguson, Cockey's Enterprises, Summit Fire & Security,
+Happy Summers, L&C Pest Management, Constellation NewEnergy, Sharp
+Business Systems, and RMS Contractors — but the vendor on THIS page may
+be a different company, so read the page carefully rather than guessing
+from this list.
+
+Respond with ONLY valid JSON in exactly this shape:
+{
+  "vendor": "string - who issued/sent this invoice",
+  "is_new_invoice": true,
+  "invoice_number": "string or null",
+  "invoice_date": "YYYY-MM-DD or null",
+  "amount": 0.00,
+  "billed_to": "string - the customer/property being billed, or null"
+}</pre>
+
+  <div class="privacy-note">
+  <strong>Privacy trade-off:</strong> Sending the image to a local Ollama vision model (as above) keeps the invoice image on this computer. Swapping in a <strong>cloud vision model</strong> (e.g., a hosted GPT-4-vision-class or Claude vision model via an HTTP Request or dedicated node) can improve accuracy on hard-to-read or unusually formatted pages, but the actual invoice IMAGE — again, client financial data — is uploaded to that provider's servers. Treat this exactly like the Path A trade-off: default to local/Ollama for client data, and only use a cloud vision model with explicit approval for a specific, justified case.
+  </div>
+</div>
+
+<h3>B-4. Parse and validate the JSON</h3>
+<div class="node pathB">
+  <div class="node-title">Node: "Parse &amp; Validate JSON"</div>
+  <div class="node-type">Type: <code class="inline">Code</code> node</div>
+  <p><strong>Purpose:</strong> Identical role to Path A step A-5 — checks the vision model's JSON reply is well-formed and that vendor/amount are present, flagging anything questionable for manual review. Use the same Code node content shown in A-5.</p>
+</div>
+
+<h3>B-5. Write the row to the spreadsheet</h3>
+<div class="node pathB">
+  <div class="node-title">Node: "Append to predictions.xlsx" (or "Append to Google Sheet")</div>
+  <div class="node-type">Type: <code class="inline">Microsoft Excel 365</code> node, or <code class="inline">Google Sheets</code> node</div>
+  <p><strong>Purpose:</strong> Same as Path A step A-6 — appends one row per invoice with the same columns (Vendor, Invoice Number, Date, Amount, Billed To). Configure identically.</p>
+</div>
+
+<h3>B-6. (Optional) Notification node</h3>
+<div class="node pathB">
+  <div class="node-title">Node: "Notify Team"</div>
+  <div class="node-type">Type: <code class="inline">Send Email</code>, <code class="inline">Slack</code>, or <code class="inline">Desktop Notification</code></div>
+  <p><strong>Purpose:</strong> Same as Path A step A-7 — optional, configure identically, and gate it behind the same "_flag" check so it only alerts on invoices that need a human look.</p>
+</div>
+
+<!-- ======================= RECOMMENDATION ======================= -->
+<h2 id="recommendation">4. Which should Team D pick?</h2>
+<div class="recommend-box">
+  <p><strong>Recommendation: start with Path A.</strong> Nearly all of your invoice PDFs today are digital files that already contain real, selectable text — the vendor-extraction test already proved a local model reads these correctly, including vendors identified only by a logo at the top of the page (something the old rule-based script missed). Path A takes advantage of that: it's faster, needs less computing power, and keeps everything private on a modest laptop with a small local model. There's no reason to pay the extra time/hardware cost of a vision model for documents that already have clean text sitting inside them.</p>
+  <p><strong>Keep Path B in your back pocket</strong> for two situations: (1) if you start regularly receiving scanned or photographed invoices (faxes, phone-camera photos, old paper files) where there's no embedded text to extract at all, or (2) if, down the road, you'd rather maintain a single simpler-looking pipeline and are willing to accept slower runs and heavier hardware needs (ideally a machine with a GPU) in exchange for one less moving part. For now, given your PDFs, your privacy requirements, and your existing hardware, Path A is the practical default.</p>
+</div>
+
+<!-- ======================= TESTING ======================= -->
+<h2 id="testing">5. Testing &amp; verification tips</h2>
+<ul>
+  <li><strong>Start small.</strong> Point the workflow at a folder with just 2-3 known invoices first (e.g., one Staples, one Quill, one Chadwell Supply) so you can check the output by eye before running it against everything.</li>
+  <li><strong>Use "Execute Node" per step.</strong> In n8n, you can run one node at a time and inspect its output on the right-hand panel before moving to the next node — this is the best way to catch a problem early instead of debugging the whole chain at once.</li>
+  <li><strong>Compare against a known-good list.</strong> Keep a small reference sheet of "PDF file name &rarr; correct vendor" for a handful of invoices you've already checked by hand, and compare the automation's output against it each time you change the prompt or swap models.</li>
+  <li><strong>Watch for duplicate files.</strong> Some invoices get saved twice under slightly different file names (e.g., a "- Copy" version). The workflow will happily process both as separate rows — that's expected; just be aware when reconciling totals.</li>
+  <li><strong>Re-test after any prompt change.</strong> Even a small wording tweak in the prompt can change how the model reads an invoice — re-run your small test batch every time you edit the prompt.</li>
+  <li><strong>Log the raw model reply somewhere for the first few weeks.</strong> Add a temporary column in the spreadsheet (or a separate "raw output" node) that stores the model's original JSON text, so if a row looks wrong later, you can see exactly what the model said and why.</li>
+</ul>
+
+<!-- ======================= FAQ ======================= -->
+<h2 id="faq">6. Troubleshooting mini-FAQ</h2>
+
+<details class="faq">
+  <summary>The model is really slow — a single invoice takes forever.</summary>
+  <p>Try a smaller model first (e.g., drop from an 8B model to a 3B model with <code class="inline">ollama pull llama3.2:3b</code>) — smaller models respond much faster with only a modest accuracy trade-off for straightforward invoices. If you're on Path B (vision), slowness is expected on a laptop without a GPU; consider adding a GPU, using a smaller vision model, or shrinking the page image resolution in the "Convert PDF Pages to Images" step (e.g., lower the <code class="inline">-r</code> value from 200 to 150).</p>
+</details>
+
+<details class="faq">
+  <summary>The JSON came back malformed / n8n can't parse it.</summary>
+  <p>Tighten the prompt: explicitly say "respond with ONLY valid JSON, no extra commentary, no markdown code fences" and give the exact field names and shape (as in the example prompts above). If your n8n version supports it, turn on "Require Specific Output Format" or attach a JSON Output Parser node to the LLM chain, which forces a valid structure. Also make sure the Parse &amp; Validate JSON node (A-5 / B-4) is in place — it catches and flags bad replies instead of letting them silently break the spreadsheet write step.</p>
+</details>
+
+<details class="faq">
+  <summary>The vendor looks wrong — it seems to have picked the property/customer instead.</summary>
+  <p>This is the classic "vendor vs. billed-to" mix-up. Remind the model explicitly in the prompt: "the vendor is who ISSUED the invoice (the seller), not who is being billed (the customer/property)." The example prompts above already include this instruction — if you've customized the prompt, double check that line is still there. It also helps to give the model 2-3 concrete example vendor names it might see (as in the prompts above) so it has a clearer sense of what a "vendor" name looks like on your documents.</p>
+</details>
+
+<details class="faq">
+  <summary>How do I know if a PDF is "digital" or "scanned"?</summary>
+  <p>Open the PDF and try to click-and-drag to highlight some text. If you can select and copy real text, it's a digital PDF and Path A's plain text-extraction step will work directly. If clicking just selects the whole page like a picture (no individual letters highlight), it's a scanned/image PDF and needs the OCR fallback (Path A) or a vision model (Path B).</p>
+</details>
+
+<details class="faq">
+  <summary>Some invoices span multiple pages — how does the workflow know where one invoice ends and the next begins?</summary>
+  <p>This is what the <code class="inline">is_new_invoice</code> field in the JSON is for. Process pages in order, and each time the model says <code class="inline">is_new_invoice: true</code>, treat that as the start of a new invoice group; pages that come after with <code class="inline">is_new_invoice: false</code> belong to the same invoice as the one before them. If you notice the model splitting a single multi-page invoice incorrectly, add a note to the prompt: "a continuation page usually repeats the same invoice number or vendor name as the page before it — treat those as the same invoice."</p>
+</details>
+
+<details class="faq">
+  <summary>Do I need Docker AND npx n8n?</summary>
+  <p>No — pick one. Docker Desktop is the sturdier long-term choice if you'll run this workflow regularly (e.g., every month at close). <code class="inline">npx n8n</code> is fine for a quick first look or for testing on a machine where you don't want to install Docker.</p>
+</details>
+
+<footer>
+  <p>This guide is a setup reference for building the workflow in n8n — it does not run anything on its own. Save it alongside your other automation notes in the <code class="inline">notes/</code> or <code class="inline">automation/</code> folder per Team D's documentation conventions. When the workflow is built and tested, consider a short write-up in <code class="inline">automation/</code> describing the final node list and settings you actually used, for whoever maintains it next.</p>
+</footer>
+
+</div>
+</body>
+</html>

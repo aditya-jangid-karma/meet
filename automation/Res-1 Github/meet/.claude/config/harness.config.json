@@ -1,0 +1,38 @@
+{
+    "logging": {
+        "enabled": true,
+        "path": "logs/",
+        "includeOutput": false
+    },
+    "protectedFolders": [
+        "config/",
+        "logs/"
+    ],
+    "hardBlockPatterns": [
+        "(?is)^(?=.*\\brm\\b)(?=.*-[a-z]*r)(?=.*-[a-z]*f)",
+        "(?is)^(?=.*remove-item)(?=.*-recurse)",
+        "(?is)^(?=.*git\\s+push)(?=.*(--force|-f(\\s|$)))",
+        "(?is)^(?=.*git\\s+reset)(?=.*--hard)",
+        "(?is)^(?=.*git\\s+clean)(?=.*-[a-z]*f)(?=.*-[a-z]*d)"
+    ],
+    "hardBlockPatterns_readme": [
+        "These are REGEX (not plain text). Matched case-insensitively and order-independently, so the path can sit between the command and its flags.",
+        "1: rm carrying BOTH a recursive flag (-r/-R/-rf/--recursive) and a force flag (-f/--force), in any order",
+        "2: Remove-Item together with -Recurse, in any order",
+        "3: git push with --force or a standalone -f",
+        "4: git reset with --hard",
+        "5: git clean carrying both a force (-f) and a directory (-d) flag",
+        "To add a rule needing two things present in any order: (?is)^(?=.*THING_A)(?=.*THING_B) . A plain word also works as a regex on its own."
+    ],
+      "approvalRequiredPatterns": [
+        "(?im)(?:^|[;&|(){}\\n])\\s*rm\\b",
+        "(?im)(?:^|[;&|(){}\\n])\\s*del\\b",
+        "(?im)(?:^|[;&|(){}\\n])\\s*remove-item\\b"
+    ],
+    "contextFiles": {
+        "contextFile": "context/HOTcontext.md",
+        "decisionFile": "context/decisions.md",
+        "architectureFile": "context/architecture.md",
+        "todosFile": "context/todos.md"
+    }
+}

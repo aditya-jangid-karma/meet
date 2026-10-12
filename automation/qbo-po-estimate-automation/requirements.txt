@@ -1,0 +1,19 @@
+# Core Dependencies
+pydantic>=2.0.0
+pydantic-settings>=2.0.0
+requests>=2.31.0
+python-dotenv>=1.0.0
+
+# Document AI / PDF Processing
+azure-ai-formrecognizer>=3.3.0
+pypdf>=3.17.0
+
+# Google Sheets Integration
+google-api-python-client>=2.100.0
+google-auth>=2.23.0
+google-auth-oauthlib>=1.1.0
+
+# Testing & Utilities
+pytest>=7.4.0
+typer>=0.9.0
+rich>=13.5.0

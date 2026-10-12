@@ -1,0 +1,145 @@
+{
+  "_README": [
+    "The field map. Hand-checked from selectors_recorded.json on 2026-08-10.",
+    "",
+    "WHY THESE USE name= AND NOT id=:",
+    "Bottomline is built on ExtJS, which invents ids like 'textfield-1752-inputEl'",
+    "fresh on every page load. Those ids are useless as permanent addresses. The",
+    "name attributes (Image_Index_Ref etc.) are hand-authored on Bottomline's side",
+    "and are stable. Never replace these with the # ids from the raw capture.",
+    "",
+    "SCOPE: the image indexing screen ONLY. The script fills these boxes and stops",
+    "before 'Convert to Invoice'. It never presses Convert, Save, or Delete."
+  ],
+
+  "fill": {
+    "vendor":              "input[name=\"Image_Index_VendorSite_Id\"]",
+    "property":            "input[name=\"Property_Id\"]",
+    "invoice_number":      "input[name=\"Image_Index_Ref\"]",
+    "invoice_date":        "input[name=\"Image_Index_Invoice_Date\"]",
+    "invoice_due_date":    "input[name=\"Image_Index_Due_Date\"]",
+    "amount":              "input[name=\"Image_Index_Amount\"]",
+    "integration_package": "input[name=\"integration_package_id\"]"
+  },
+
+  "_autocomplete_note": [
+    "These are NOT plain text boxes. Typing into them and moving on does not",
+    "set a value. You must type, wait for the dropdown, then click the match --",
+    "that is what stores the underlying code. After selecting vendor or property,",
+    "their code auto-loads on screen; the script should confirm that happened",
+    "before treating the field as done."
+  ],
+  "autocomplete": [
+    "vendor",
+    "property",
+    "integration_package"
+  ],
+
+  "_dropdown_item_note": [
+    "OBSERVED, not inferred. Updated 2026-08-14 -- the ':visible' part is the",
+    "important half and was added after it caused a live failure.",
+    "",
+    "WHY ':visible' IS NOT OPTIONAL:",
+    "ExtJS does not destroy a dropdown when it closes. It leaves the whole",
+    "list sitting in the page, hidden. So a bare '.x-boundlist-item' matches",
+    "items belonging to EVERY combo box on the screen -- the one that is open",
+    "and all the closed ones too.",
+    "",
+    "The 2026-08-14 16:31 run proved it. While reading the PROPERTY dropdown,",
+    "the script resolved to this leftover from the Integration Package box:",
+    "  <li data-boundview=\"customcombo-1736-picker\"",
+    "      class=\"x-boundlist-item x-boundlist-selected\">YARDI</li>",
+    "and spent 30 seconds trying to click something invisible.",
+    "",
+    "Two consequences, and the second is the dangerous one:",
+    "  1. clicks time out on hidden leftovers;",
+    "  2. the MATCH COUNT is wrong. The Property dropdown had no real match,",
+    "     but the stale YARDI item made the count 1, which the integration",
+    "     package check reads as 'confirmed'. The only reason a wrong package",
+    "     was not recorded is that clicking an invisible item happens to fail.",
+    "",
+    "The earlier note here argued the selector had to be right because the",
+    "script 'could not have counted matches otherwise'. That reasoning was",
+    "wrong: it was counting, just counting the wrong things as well.",
+    "",
+    "If the script ever reports 'no dropdown appeared' on a vendor you know",
+    "exists, check the SPELLING in the spreadsheet first. That was the cause",
+    "the one time it happened (Steps Appliance Repair LLC, 2026-08-10)."
+  ],
+  "dropdown_item_selector": ".x-boundlist-item:visible",
+
+  "_verify_note": [
+    "image_name is READ, never typed into. Before filling anything, the script",
+    "reads this box and checks it matches the Image Name column in the",
+    "spreadsheet row. If they differ, it stops. This is what makes it impossible",
+    "to record one vendor's invoice against another's document."
+  ],
+  "verify": {
+    "image_name": "input[name=\"Image_Index_Name\"]"
+  },
+
+  "_queue_note": [
+    "The 'Images to be Indexed' screen. All of these were observed in the",
+    "2026-08-13 17:42 recording -- none is inferred.",
+    "",
+    "index_selected uses Bottomline's OWN class, never a position on the",
+    "toolbar. The delete icon sits on that same toolbar and acts on whatever",
+    "rows are ticked. A loose selector here could bin a client's invoice.",
+    "",
+    "menu_item carries ':visible' for the same reason as dropdown_item_selector",
+    "above -- an ExtJS menu stays in the page while hidden. Without it the",
+    "script found the 'Images to be Indexed' item, spent 30 seconds trying to",
+    "click something invisible, and then threw. With it, a menu that is not",
+    "open simply counts as absent and the script goes straight to the queue's",
+    "own address instead. Observed 2026-08-14.",
+    "",
+    "menu_opener / menu_opener_text: the 'Images to be Indexed' item lives",
+    "INSIDE a top-level toolbar button, 'Image Management', and is not in the",
+    "page at all until that button is opened. Without opening it first the item",
+    "count is 0 -- exactly the 2026-08-18 failure ('Could not find the Images",
+    "to be Indexed menu item'). The script now HOVERS, then clicks only if",
+    "needed, on 'Image Management' to reveal the menu before clicking the item.",
+    "Selected by visible text because the ExtJS id (hoverButton-1054-...) is",
+    "regenerated every load. Observed on screen 2026-08-18."
+  ],
+  "queue": {
+    "grid_row":         "tr.x-grid-row",
+    "row_tick_box":     ".x-grid-checkcolumn-cell-inner",
+    "index_selected":   "a.process-comp-btn",
+    "next_page":        ".x-tbar-page-next",
+    "page_number_box":  "input[name=\"inputItem\"]",
+    "menu_opener":      ".x-btn-inner",
+    "menu_opener_text": "Image Management",
+    "menu_item":        "a.x-menu-item-link:visible",
+    "menu_item_text":   "Images to be Indexed"
+  },
+
+  "_header_note": [
+    "Reads 'Image Index - <image name>' on the indexing screen. This is how the",
+    "script proves the indexing screen actually opened before it touches",
+    "anything -- see the delete-icon warning above.",
+    "",
+    "top-page-header-text is Bottomline's own class. The other two classes on",
+    "that element (x-header-text, x-panel-header-text-container-default) are",
+    "generic ExtJS and match other screens' headings too. Do not use them.",
+    "Confirmed on screen 2026-08-13."
+  ],
+  "page_header": ".top-page-header-text",
+
+  "never_click": {
+    "convert_to_invoice": "Convert to Invoice",
+    "save":               "Save",
+    "save_as_exception":  "Save as Exception",
+    "delete":             "Delete"
+  },
+
+  "out_of_scope": {
+    "_why": "Everything below appears only AFTER 'Convert to Invoice', which the script never presses.",
+    "property_id_lowercase": "input[name=\"property_id\"]"
+  },
+
+  "dropped": {
+    "gl_account":    "Bottomline has no GL account field on this screen. Confirmed 2026-08-10.",
+    "document_type": "input[name=\"Image_Doctype_Id\"] - exists, arrives pre-filled ('General ...'), operators rarely change it. Confirmed on screen 2026-08-13. Out of scope for V1."
+  }
+}

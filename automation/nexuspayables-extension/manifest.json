@@ -1,0 +1,29 @@
+{
+  "manifest_version": 3,
+  "name": "NexusPayables Invoice Capturer",
+  "version": "1.0",
+  "description": "Captures invoice details from NexusPayables and saves them to a Google Sheet.",
+  "permissions": [
+    "storage",
+    "activeTab",
+    "scripting"
+  ],
+  "host_permissions": [
+    "*://residentialone.nexuspayables.com/*",
+    "https://script.google.com/*",
+    "https://script.googleusercontent.com/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["*://residentialone.nexuspayables.com/*"],
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    }
+  ],
+  "action": {
+    "default_title": "NexusPayables Capturer"
+  }
+}

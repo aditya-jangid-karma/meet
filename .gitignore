@@ -1,0 +1,60 @@
+# Output files
+*.xlsx
+*.xls
+*.csv
+*.parquet
+*.png
+*.jpg
+*.jpeg
+*.pdf
+*.log
+output/
+outputs/
+new output/
+excel files/
+photos/
+Archive_Scratch/
+scratch/
+
+# Archives & compressed files
+*.zip
+*.tar
+*.gz
+*.rar
+*.7z
+
+# Credentials, secrets, and auth tokens
+*token*.json
+*secret*.json
+*credential*.json
+google_service_account.json
+client_secrets*.json
+*.env
+*.env.*
+*.key
+*.pem
+*.p12
+*.db
+*.sqlite
+*.sqlite3
+
+# Python environment & cache
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+ENV/
+env/
+.pytest_cache/
+*.egg-info/
+
+# Logs & temp files
+automation_daily_log.txt
+*.tmp
+*.bak
+
+# OS generated files
+.DS_Store
+Thumbs.db
+desktop.ini

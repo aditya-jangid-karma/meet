@@ -1,0 +1,561 @@
+{
+    "completed_tasks": {
+        "Country Inn & Suites Huntersville::January": {
+            "status": "COMPLETED",
+            "hotel": "Country Inn & Suites Huntersville",
+            "month": "January",
+            "file_path": "C:\\Users\\Meet Patel\\Desktop\\automation\\hellogm\\Country Inn & Suites Huntersville - January_01-31-2026.xlsx",
+            "sheet_stats": {
+                "Refund": 463,
+                "RoomCharge Adjustment": 180,
+                "Lowest Rates": 155,
+                "Comp Room": 180,
+                "No Shows": 4
+            },
+            "timestamp": "2026-09-09 15:30:22"
+        },
+        "Country Inn & Suites Huntersville::February": {
+            "status": "COMPLETED",
+            "hotel": "Country Inn & Suites Huntersville",
+            "month": "February",
+            "file_path": "C:\\Users\\Meet Patel\\Desktop\\automation\\hellogm\\Country Inn & Suites Huntersville - February_02-28-2026.xlsx",
+            "sheet_stats": {
+                "Refund": 516,
+                "RoomCharge Adjustment": 30,
+                "Lowest Rates": 140,
+                "Comp Room": 27,
+                "No Shows": 4
+            },
+            "timestamp": "2026-09-09 15:30:44"
+        },
+        "Country Inn & Suites Huntersville::March": {
+            "status": "COMPLETED",
+            "hotel": "Country Inn & Suites Huntersville",
+            "month": "March",
+            "file_path": "C:\\Users\\Meet Patel\\Desktop\\automation\\hellogm\\Country Inn & Suites Huntersville - March_03-31-2026.xlsx",
+            "sheet_stats": {
+                "Refund": 529,
+                "RoomCharge Adjustment": 31,
+                "Lowest Rates": 155,
+                "Comp Room": 23,
+                "No Shows": 3
+            },
+            "timestamp": "2026-09-09 15:31:09"
+        },
+        "Country Inn & Suites Huntersville::April": {
+            "status": "COMPLETED",
+            "hotel": "Country Inn & Suites Huntersville",
+            "month": "April",
+            "file_path": "C:\\Users\\Meet Patel\\Desktop\\automation\\hellogm\\Country Inn & Suites Huntersville - April_04-30-2026.xlsx",
+            "sheet_stats": {
+                "Refund": 665,
+                "RoomCharge Adjustment": 43,
+                "Lowest Rates": 145,
+                "Comp Room": 30,
+                "No Shows": 4
+            },
+            "timestamp": "2026-09-09 15:31:32"
+        },
+        "Country Inn & Suites Huntersville::May": {
+            "status": "COMPLETED",
+            "hotel": "Country Inn & Suites Huntersville",
+            "month": "May",
+            "file_path": "C:\\Users\\Meet Patel\\Desktop\\automation\\hellogm\\Country Inn & Suites Huntersville - May_05-31-2026.xlsx",
+            "sheet_stats": {
+                "Refund": 411,
+                "RoomCharge Adjustment": 10,
+                "Lowest Rates": 150,
+                "Comp Room": 6,
+                "No Shows": 2
+            },
+            "timestamp": "2026-09-09 15:31:54"
+        },
+        "Country Inn & Suites Huntersville::June": {
+            "status": "COMPLETED",
+            "hotel": "Country Inn & Suites Huntersville",
+            "month": "June",
+            "file_path": "C:\\Users\\Meet Patel\\Desktop\\automation\\hellogm\\Country Inn & Suites Huntersville - June_06-30-2026.xlsx",
+            "sheet_stats": {
+                "Refund": 407,
+                "RoomCharge Adjustment": 126,
+                "Lowest Rates": 150,
+                "Comp Room": 116,
+                "No Shows": 5
+            },
+            "timestamp": "2026-09-09 15:32:16"
+        },
+        "Country Inn & Suites Huntersville::July": {
+            "status": "COMPLETED",
+            "hotel": "Country Inn & Suites Huntersville",
+            "month": "July",
+            "file_path": "C:\\Users\\Meet Patel\\Desktop\\automation\\hellogm\\Country Inn & Suites Huntersville - July_07-31-2026.xlsx",
+            "sheet_stats": {
+                "Refund": 597,
+                "RoomCharge Adjustment": 20,
+                "Lowest Rates": 155,
+                "Comp Room": 31,
+                "No Shows": 4
+            },
+            "timestamp": "2026-09-09 15:32:44"
+        },
+        "Country Inn & Suites Huntersville::August": {
+            "status": "COMPLETED",
+            "hotel": "Country Inn & Suites Huntersville",
+            "month": "August",
+            "file_path": "C:\\Users\\Meet Patel\\Desktop\\automation\\hellogm\\Country Inn & Suites Huntersville - August_08-31-2026.xlsx",
+            "sheet_stats": {
+                "Refund": 531,
+                "RoomCharge Adjustment": 43,
+                "Lowest Rates": 155,
+                "Comp Room": 30,
+                "No Shows": 7
+            },
+            "timestamp": "2026-09-09 15:33:09"
+        },
+        "Country Inn & Suites Huntersville::September": {
+            "status": "COMPLETED",
+            "hotel": "Country Inn & Suites Huntersville",
+            "month": "September",
+            "file_path": "C:\\Users\\Meet Patel\\Desktop\\automation\\hellogm\\Country Inn & Suites Huntersville - September_09-03-2026.xlsx",
+            "sheet_stats": {
+                "Refund": 22,
+                "RoomCharge Adjustment": 3,
+                "Lowest Rates": 15,
+                "Comp Room": 0,
+                "No Shows": 0
+            },
+            "timestamp": "2026-09-09 15:33:30"
+        },
+        "Extended Stay America - Columbia - West - Stoneridge Dr::January": {
+            "status": "COMPLETED",
+            "hotel": "Extended Stay America - Columbia - West - Stoneridge Dr",
+            "month": "January",
+            "file_path": "C:\\Users\\Meet Patel\\Desktop\\automation\\hellogm\\Extended Stay America - Columbia - West - Stoneridge Dr - January_01-31-2026.xlsx",
+            "sheet_stats": {
+                "Refund": 2,
+                "RoomCharge Adjustment": 0,
+                "Lowest Rates": 155,
+                "Comp Room": 4,
+                "No Shows": 0
+            },
+            "timestamp": "2026-09-09 15:34:23"
+        },
+        "Extended Stay America - Columbia - West - Stoneridge Dr::February": {
+            "status": "COMPLETED",
+            "hotel": "Extended Stay America - Columbia - West - Stoneridge Dr",
+            "month": "February",
+            "file_path": "C:\\Users\\Meet Patel\\Desktop\\automation\\hellogm\\Extended Stay America - Columbia - West - Stoneridge Dr - February_02-28-2026.xlsx",
+            "sheet_stats": {
+                "Refund": 0,
+                "RoomCharge Adjustment": 0,
+                "Lowest Rates": 140,
+                "Comp Room": 2,
+                "No Shows": 0
+            },
+            "timestamp": "2026-09-09 15:34:43"
+        },
+        "Extended Stay America - Columbia - West - Stoneridge Dr::March": {
+            "status": "COMPLETED",
+            "hotel": "Extended Stay America - Columbia - West - Stoneridge Dr",
+            "month": "March",
+            "file_path": "C:\\Users\\Meet Patel\\Desktop\\automation\\hellogm\\Extended Stay America - Columbia - West - Stoneridge Dr - March_03-31-2026.xlsx",
+            "sheet_stats": {
+                "Refund": 0,
+                "RoomCharge Adjustment": 0,
+                "Lowest Rates": 155,
+                "Comp Room": 4,
+                "No Shows": 0
+            },
+            "timestamp": "2026-09-09 15:35:03"
+        },
+        "Extended Stay America - Columbia - West - Stoneridge Dr::April": {
+            "status": "COMPLETED",
+            "hotel": "Extended Stay America - Columbia - West - Stoneridge Dr",
+            "month": "April",
+            "file_path": "C:\\Users\\Meet Patel\\Desktop\\automation\\hellogm\\Extended Stay America - Columbia - West - Stoneridge Dr - April_04-30-2026.xlsx",
+            "sheet_stats": {
+                "Refund": 0,
+                "RoomCharge Adjustment": 0,
+                "Lowest Rates": 149,
+                "Comp Room": 6,
+                "No Shows": 0
+            },
+            "timestamp": "2026-09-09 15:35:23"
+        },
+        "Extended Stay America - Columbia - West - Stoneridge Dr::May": {
+            "status": "COMPLETED",
+            "hotel": "Extended Stay America - Columbia - West - Stoneridge Dr",
+            "month": "May",
+            "file_path": "C:\\Users\\Meet Patel\\Desktop\\automation\\hellogm\\Extended Stay America - Columbia - West - Stoneridge Dr - May_05-31-2026.xlsx",
+            "sheet_stats": {
+                "Refund": 0,
+                "RoomCharge Adjustment": 0,
+                "Lowest Rates": 155,
+                "Comp Room": 4,
+                "No Shows": 0
+            },
+            "timestamp": "2026-09-09 15:35:43"
+        },
+        "Extended Stay America - Columbia - West - Stoneridge Dr::June": {
+            "status": "COMPLETED",
+            "hotel": "Extended Stay America - Columbia - West - Stoneridge Dr",
+            "month": "June",
+            "file_path": "C:\\Users\\Meet Patel\\Desktop\\automation\\hellogm\\Extended Stay America - Columbia - West - Stoneridge Dr - June_06-30-2026.xlsx",
+            "sheet_stats": {
+                "Refund": 0,
+                "RoomCharge Adjustment": 0,
+                "Lowest Rates": 35,
+                "Comp Room": 1,
+                "No Shows": 0
+            },
+            "timestamp": "2026-09-09 15:36:03"
+        },
+        "Extended Stay America - Columbia - West - Stoneridge Dr::July": {
+            "status": "COMPLETED",
+            "hotel": "Extended Stay America - Columbia - West - Stoneridge Dr",
+            "month": "July",
+            "file_path": "C:\\Users\\Meet Patel\\Desktop\\automation\\hellogm\\Extended Stay America - Columbia - West - Stoneridge Dr - July_07-31-2026.xlsx",
+            "sheet_stats": {
+                "Refund": 0,
+                "RoomCharge Adjustment": 0,
+                "Lowest Rates": 0,
+                "Comp Room": 0,
+                "No Shows": 0
+            },
+            "timestamp": "2026-09-09 15:36:23"
+        },
+        "Extended Stay America - Columbia - West - Stoneridge Dr::August": {
+            "status": "COMPLETED",
+            "hotel": "Extended Stay America - Columbia - West - Stoneridge Dr",
+            "month": "August",
+            "file_path": "C:\\Users\\Meet Patel\\Desktop\\automation\\hellogm\\Extended Stay America - Columbia - West - Stoneridge Dr - August_08-31-2026.xlsx",
+            "sheet_stats": {
+                "Refund": 0,
+                "RoomCharge Adjustment": 0,
+                "Lowest Rates": 0,
+                "Comp Room": 0,
+                "No Shows": 0
+            },
+            "timestamp": "2026-09-09 15:36:43"
+        },
+        "Extended Stay America - Columbia - West - Stoneridge Dr::September": {
+            "status": "COMPLETED",
+            "hotel": "Extended Stay America - Columbia - West - Stoneridge Dr",
+            "month": "September",
+            "file_path": "C:\\Users\\Meet Patel\\Desktop\\automation\\hellogm\\Extended Stay America - Columbia - West - Stoneridge Dr - September_09-03-2026.xlsx",
+            "sheet_stats": {
+                "Refund": 0,
+                "RoomCharge Adjustment": 0,
+                "Lowest Rates": 0,
+                "Comp Room": 0,
+                "No Shows": 0
+            },
+            "timestamp": "2026-09-09 15:37:02"
+        },
+        "Motel 6 Greenville SC I-85::January": {
+            "status": "COMPLETED",
+            "hotel": "Motel 6 Greenville SC I-85",
+            "month": "January",
+            "file_path": "C:\\Users\\Meet Patel\\Desktop\\automation\\hellogm\\Motel 6 Greenville SC I-85 - January_01-31-2026.xlsx",
+            "sheet_stats": {
+                "Refund": 141,
+                "RoomCharge Adjustment": 0,
+                "Lowest Rates": 155,
+                "Comp Room": 1,
+                "No Shows": 4
+            },
+            "timestamp": "2026-09-09 15:37:52"
+        },
+        "Motel 6 Greenville SC I-85::February": {
+            "status": "COMPLETED",
+            "hotel": "Motel 6 Greenville SC I-85",
+            "month": "February",
+            "file_path": "C:\\Users\\Meet Patel\\Desktop\\automation\\hellogm\\Motel 6 Greenville SC I-85 - February_02-28-2026.xlsx",
+            "sheet_stats": {
+                "Refund": 122,
+                "RoomCharge Adjustment": 0,
+                "Lowest Rates": 140,
+                "Comp Room": 1,
+                "No Shows": 1
+            },
+            "timestamp": "2026-09-09 15:38:13"
+        },
+        "Motel 6 Greenville SC I-85::March": {
+            "status": "COMPLETED",
+            "hotel": "Motel 6 Greenville SC I-85",
+            "month": "March",
+            "file_path": "C:\\Users\\Meet Patel\\Desktop\\automation\\hellogm\\Motel 6 Greenville SC I-85 - March_03-31-2026.xlsx",
+            "sheet_stats": {
+                "Refund": 117,
+                "RoomCharge Adjustment": 0,
+                "Lowest Rates": 155,
+                "Comp Room": 1,
+                "No Shows": 1
+            },
+            "timestamp": "2026-09-09 15:38:37"
+        },
+        "Motel 6 Greenville SC I-85::April": {
+            "status": "COMPLETED",
+            "hotel": "Motel 6 Greenville SC I-85",
+            "month": "April",
+            "file_path": "C:\\Users\\Meet Patel\\Desktop\\automation\\hellogm\\Motel 6 Greenville SC I-85 - April_04-30-2026.xlsx",
+            "sheet_stats": {
+                "Refund": 63,
+                "RoomCharge Adjustment": 0,
+                "Lowest Rates": 150,
+                "Comp Room": 0,
+                "No Shows": 1
+            },
+            "timestamp": "2026-09-09 15:39:03"
+        },
+        "Motel 6 Greenville SC I-85::May": {
+            "status": "COMPLETED",
+            "hotel": "Motel 6 Greenville SC I-85",
+            "month": "May",
+            "file_path": "C:\\Users\\Meet Patel\\Desktop\\automation\\hellogm\\Motel 6 Greenville SC I-85 - May_05-31-2026.xlsx",
+            "sheet_stats": {
+                "Refund": 74,
+                "RoomCharge Adjustment": 0,
+                "Lowest Rates": 155,
+                "Comp Room": 1,
+                "No Shows": 2
+            },
+            "timestamp": "2026-09-09 15:39:24"
+        },
+        "Motel 6 Greenville SC I-85::June": {
+            "status": "COMPLETED",
+            "hotel": "Motel 6 Greenville SC I-85",
+            "month": "June",
+            "file_path": "C:\\Users\\Meet Patel\\Desktop\\automation\\hellogm\\Motel 6 Greenville SC I-85 - June_06-30-2026.xlsx",
+            "sheet_stats": {
+                "Refund": 51,
+                "RoomCharge Adjustment": 0,
+                "Lowest Rates": 150,
+                "Comp Room": 1,
+                "No Shows": 5
+            },
+            "timestamp": "2026-09-09 15:39:45"
+        },
+        "Motel 6 Greenville SC I-85::July": {
+            "status": "COMPLETED",
+            "hotel": "Motel 6 Greenville SC I-85",
+            "month": "July",
+            "file_path": "C:\\Users\\Meet Patel\\Desktop\\automation\\hellogm\\Motel 6 Greenville SC I-85 - July_07-31-2026.xlsx",
+            "sheet_stats": {
+                "Refund": 54,
+                "RoomCharge Adjustment": 0,
+                "Lowest Rates": 148,
+                "Comp Room": 3,
+                "No Shows": 3
+            },
+            "timestamp": "2026-09-09 15:40:06"
+        },
+        "Motel 6 Greenville SC I-85::August": {
+            "status": "COMPLETED",
+            "hotel": "Motel 6 Greenville SC I-85",
+            "month": "August",
+            "file_path": "C:\\Users\\Meet Patel\\Desktop\\automation\\hellogm\\Motel 6 Greenville SC I-85 - August_08-31-2026.xlsx",
+            "sheet_stats": {
+                "Refund": 98,
+                "RoomCharge Adjustment": 0,
+                "Lowest Rates": 155,
+                "Comp Room": 3,
+                "No Shows": 2
+            },
+            "timestamp": "2026-09-09 15:40:28"
+        },
+        "Motel 6 Greenville SC I-85::September": {
+            "status": "COMPLETED",
+            "hotel": "Motel 6 Greenville SC I-85",
+            "month": "September",
+            "file_path": "C:\\Users\\Meet Patel\\Desktop\\automation\\hellogm\\Motel 6 Greenville SC I-85 - September_09-03-2026.xlsx",
+            "sheet_stats": {
+                "Refund": 3,
+                "RoomCharge Adjustment": 0,
+                "Lowest Rates": 15,
+                "Comp Room": 0,
+                "No Shows": 2
+            },
+            "timestamp": "2026-09-09 15:40:50"
+        },
+        "Motel 6 Hickory::January": {
+            "status": "COMPLETED",
+            "hotel": "Motel 6 Hickory",
+            "month": "January",
+            "file_path": "C:\\Users\\Meet Patel\\Desktop\\automation\\hellogm\\Motel 6 Hickory - January_01-31-2026.xlsx",
+            "sheet_stats": {
+                "Refund": 62,
+                "RoomCharge Adjustment": 0,
+                "Lowest Rates": 10,
+                "Comp Room": 9,
+                "No Shows": 2
+            },
+            "timestamp": "2026-09-09 15:41:45"
+        },
+        "Motel 6 Hickory::February": {
+            "status": "COMPLETED",
+            "hotel": "Motel 6 Hickory",
+            "month": "February",
+            "file_path": "C:\\Users\\Meet Patel\\Desktop\\automation\\hellogm\\Motel 6 Hickory - February_02-28-2026.xlsx",
+            "sheet_stats": {
+                "Refund": 78,
+                "RoomCharge Adjustment": 0,
+                "Lowest Rates": 25,
+                "Comp Room": 15,
+                "No Shows": 4
+            },
+            "timestamp": "2026-09-09 15:42:07"
+        },
+        "Motel 6 Hickory::March": {
+            "status": "COMPLETED",
+            "hotel": "Motel 6 Hickory",
+            "month": "March",
+            "file_path": "C:\\Users\\Meet Patel\\Desktop\\automation\\hellogm\\Motel 6 Hickory - March_03-31-2026.xlsx",
+            "sheet_stats": {
+                "Refund": 76,
+                "RoomCharge Adjustment": 0,
+                "Lowest Rates": 0,
+                "Comp Room": 0,
+                "No Shows": 2
+            },
+            "timestamp": "2026-09-09 15:42:27"
+        },
+        "Motel 6 Hickory::April": {
+            "status": "COMPLETED",
+            "hotel": "Motel 6 Hickory",
+            "month": "April",
+            "file_path": "C:\\Users\\Meet Patel\\Desktop\\automation\\hellogm\\Motel 6 Hickory - April_04-30-2026.xlsx",
+            "sheet_stats": {
+                "Refund": 95,
+                "RoomCharge Adjustment": 0,
+                "Lowest Rates": 0,
+                "Comp Room": 0,
+                "No Shows": 3
+            },
+            "timestamp": "2026-09-09 15:42:48"
+        },
+        "Motel 6 Hickory::May": {
+            "status": "COMPLETED",
+            "hotel": "Motel 6 Hickory",
+            "month": "May",
+            "file_path": "C:\\Users\\Meet Patel\\Desktop\\automation\\hellogm\\Motel 6 Hickory - May_05-31-2026.xlsx",
+            "sheet_stats": {
+                "Refund": 28,
+                "RoomCharge Adjustment": 0,
+                "Lowest Rates": 105,
+                "Comp Room": 31,
+                "No Shows": 1
+            },
+            "timestamp": "2026-09-09 15:43:10"
+        },
+        "Motel 6 Hickory::June": {
+            "status": "COMPLETED",
+            "hotel": "Motel 6 Hickory",
+            "month": "June",
+            "file_path": "C:\\Users\\Meet Patel\\Desktop\\automation\\hellogm\\Motel 6 Hickory - June_06-30-2026.xlsx",
+            "sheet_stats": {
+                "Refund": 0,
+                "RoomCharge Adjustment": 0,
+                "Lowest Rates": 133,
+                "Comp Room": 32,
+                "No Shows": 0
+            },
+            "timestamp": "2026-09-09 15:43:31"
+        },
+        "Motel 6 Hickory::July": {
+            "status": "COMPLETED",
+            "hotel": "Motel 6 Hickory",
+            "month": "July",
+            "file_path": "C:\\Users\\Meet Patel\\Desktop\\automation\\hellogm\\Motel 6 Hickory - July_07-31-2026.xlsx",
+            "sheet_stats": {
+                "Refund": 0,
+                "RoomCharge Adjustment": 0,
+                "Lowest Rates": 65,
+                "Comp Room": 22,
+                "No Shows": 0
+            },
+            "timestamp": "2026-09-09 15:43:51"
+        },
+        "Motel 6 Hickory::August": {
+            "status": "COMPLETED",
+            "hotel": "Motel 6 Hickory",
+            "month": "August",
+            "file_path": "C:\\Users\\Meet Patel\\Desktop\\automation\\hellogm\\Motel 6 Hickory - August_08-31-2026.xlsx",
+            "sheet_stats": {
+                "Refund": 62,
+                "RoomCharge Adjustment": 0,
+                "Lowest Rates": 100,
+                "Comp Room": 32,
+                "No Shows": 1
+            },
+            "timestamp": "2026-09-09 15:44:12"
+        },
+        "Motel 6 Hickory::September": {
+            "status": "COMPLETED",
+            "hotel": "Motel 6 Hickory",
+            "month": "September",
+            "file_path": "C:\\Users\\Meet Patel\\Desktop\\automation\\hellogm\\Motel 6 Hickory - September_09-03-2026.xlsx",
+            "sheet_stats": {
+                "Refund": 9,
+                "RoomCharge Adjustment": 0,
+                "Lowest Rates": 15,
+                "Comp Room": 5,
+                "No Shows": 0
+            },
+            "timestamp": "2026-09-09 15:44:33"
+        }
+    },
+    "completed_hotels": {
+        "Country Inn & Suites Huntersville": {
+            "status": "COMPLETED",
+            "combined_file_path": "C:\\Users\\Meet Patel\\Desktop\\automation\\hellogm\\Country Inn & Suites Huntersville - Full Year Combined.xlsx",
+            "sheet_counts": {
+                "Refund": 4141,
+                "Comp Room": 443,
+                "Lowest Rates": 1220,
+                "RoomCharge Adjustment": 486,
+                "No Shows": 33
+            },
+            "timestamp": "2026-09-09 15:33:35"
+        },
+        "Extended Stay America - Columbia - West - Stoneridge Dr": {
+            "status": "COMPLETED",
+            "combined_file_path": "C:\\Users\\Meet Patel\\Desktop\\automation\\hellogm\\Extended Stay America - Columbia - West - Stoneridge Dr - Full Year Combined.xlsx",
+            "sheet_counts": {
+                "Refund": 2,
+                "Comp Room": 21,
+                "Lowest Rates": 789,
+                "RoomCharge Adjustment": 0,
+                "No Shows": 0
+            },
+            "timestamp": "2026-09-09 15:37:05"
+        },
+        "Motel 6 Greenville SC I-85": {
+            "status": "COMPLETED",
+            "combined_file_path": "C:\\Users\\Meet Patel\\Desktop\\automation\\hellogm\\Motel 6 Greenville SC I-85 - Full Year Combined.xlsx",
+            "sheet_counts": {
+                "Refund": 723,
+                "Comp Room": 11,
+                "Lowest Rates": 1223,
+                "RoomCharge Adjustment": 0,
+                "No Shows": 21
+            },
+            "timestamp": "2026-09-09 15:40:54"
+        },
+        "Motel 6 Hickory": {
+            "status": "COMPLETED",
+            "combined_file_path": "C:\\Users\\Meet Patel\\Desktop\\automation\\hellogm\\Motel 6 Hickory - Full Year Combined.xlsx",
+            "sheet_counts": {
+                "Refund": 410,
+                "Comp Room": 146,
+                "Lowest Rates": 453,
+                "RoomCharge Adjustment": 0,
+                "No Shows": 13
+            },
+            "timestamp": "2026-09-09 15:44:37"
+        }
+    },
+    "all_completed": true,
+    "master_file": "C:\\Users\\Meet Patel\\Desktop\\automation\\hellogm\\ALL HOTELS - Full Year Combined.xlsx",
+    "last_run_timestamp": "2026-09-09 15:44:55"
+}

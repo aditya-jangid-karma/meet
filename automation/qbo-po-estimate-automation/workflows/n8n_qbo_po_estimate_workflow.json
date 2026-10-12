@@ -1,0 +1,193 @@
+{
+  "name": "QBO PO and Estimate Automation Workflow",
+  "nodes": [
+    {
+      "parameters": {
+        "pollTimes": {
+          "item": [
+            {
+              "mode": "everyMinute"
+            }
+          ]
+        },
+        "filters": {
+          "labelIds": ["Work Pending Team H"]
+        }
+      },
+      "id": "node-email-trigger",
+      "name": "Gmail: Work Pending Intake",
+      "type": "n8n-nodes-base.gmailTrigger",
+      "typeVersion": 1,
+      "position": [250, 300]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "string": [
+            {
+              "value1": "={{ $json.subject }}",
+              "operation": "contains",
+              "value2": "PO"
+            }
+          ]
+        }
+      },
+      "id": "node-filter-po",
+      "name": "Filter PO Requests",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [450, 300]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $env.AZURE_DOC_INTEL_ENDPOINT }}/formrecognizer/documentModels/prebuilt-purchaseOrder:analyze?api-version=2023-07-31",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBinaryData": true,
+        "binaryPropertyName": "attachment:data"
+      },
+      "id": "node-azure-doc-intel",
+      "name": "Azure Document Intelligence: Extract PO",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [680, 300]
+    },
+    {
+      "parameters": {
+        "operation": "lookup",
+        "sheetId": "={{ $env.GOOGLE_SHEET_ID }}",
+        "range": "PROFORMAS!A:Z",
+        "lookupColumn": "Order #",
+        "lookupValue": "={{ $json.extracted_order_number }}"
+      },
+      "id": "node-gsheet-lookup",
+      "name": "Google Sheets: Find PROFORMAS Row",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4,
+      "position": [900, 300]
+    },
+    {
+      "parameters": {
+        "jsCode": "// 10 Validation Gates from Report 1 Section 4\nconst extracted = $('Azure Document Intelligence: Extract PO').first().json;\nconst sheet = $('Google Sheets: Find PROFORMAS Row').first().json;\n\nconst errors = [];\n\n// Gate 1: Supplier Match\nif (!sheet.supplier || !extracted.supplier.toLowerCase().includes(sheet.supplier.toLowerCase().slice(0, 5))) {\n  errors.push(`Supplier mismatch: Extracted '${extracted.supplier}' vs Sheet '${sheet.supplier}'`);\n}\n\n// Gate 2: Order # Match\nif (String(extracted.order_number).trim() !== String(sheet.order_number).trim()) {\n  errors.push(`Order # mismatch: Extracted '${extracted.order_number}' vs Sheet '${sheet.order_number}'`);\n}\n\n// Gate 5: Quantity Match\nif (Math.abs(Number(extracted.quantity) - Number(sheet.quantity)) > 0.01) {\n  errors.push(`Quantity mismatch: Extracted ${extracted.quantity} vs Sheet ${sheet.quantity}`);\n}\n\n// Gate 6: Purchase Rate Match\nif (Math.abs(Number(extracted.unit_price) - Number(sheet.supplier_price)) > 0.005) {\n  errors.push(`Rate mismatch: Extracted ${extracted.unit_price} vs Sheet ${sheet.supplier_price}`);\n}\n\n// Gate 7: Customer Price Check\nif (Number(sheet.customer_price) <= Number(sheet.supplier_price)) {\n  errors.push(`Invalid customer price: ${sheet.customer_price} <= cost ${sheet.supplier_price}`);\n}\n\nreturn [{\n  json: {\n    passed: errors.length === 0,\n    errors: errors,\n    order_number: sheet.order_number,\n    item_code: sheet.item_code,\n    description: sheet.description,\n    quantity: sheet.quantity,\n    supplier_price: sheet.supplier_price,\n    customer_price: sheet.customer_price\n  }\n}];"
+      },
+      "id": "node-validation-engine",
+      "name": "Validation Engine (10 Gates)",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [1120, 300]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "boolean": [
+            {
+              "value1": "={{ $json.passed }}",
+              "value2": true
+            }
+          ]
+        }
+      },
+      "id": "node-validation-check",
+      "name": "Check: Validation Passed?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [1340, 300]
+    },
+    {
+      "parameters": {
+        "channel": "#order-exceptions",
+        "text": "=:warning: [AUTOMATION EXCEPTION] Order #{{ $json.order_number }} failed validation:\n{{ $json.errors.join('\\n') }}"
+      },
+      "id": "node-alert-exception",
+      "name": "Alert: Exception Channel",
+      "type": "n8n-nodes-base.slack",
+      "typeVersion": 2.1,
+      "position": [1560, 480]
+    },
+    {
+      "parameters": {
+        "resource": "purchaseOrder",
+        "operation": "create",
+        "vendor": "={{ $('Google Sheets: Find PROFORMAS Row').first().json.supplier }}",
+        "docNumber": "={{ $('Azure Document Intelligence: Extract PO').first().json.supplier_po_number }}",
+        "memo": "=Order #{{ $json.order_number }}",
+        "line": [
+          {
+            "description": "={{ $json.description }}",
+            "amount": "={{ $json.quantity * $json.supplier_price }}",
+            "detailType": "ItemBasedExpenseLineDetail"
+          }
+        ]
+      },
+      "id": "node-qbo-create-po",
+      "name": "QBO: Create Purchase Order",
+      "type": "n8n-nodes-base.quickbooks",
+      "typeVersion": 1,
+      "position": [1560, 200]
+    },
+    {
+      "parameters": {
+        "resource": "estimate",
+        "operation": "create",
+        "customer": "T3 TEXTILES S.A.S",
+        "memo": "=Order #{{ $json.order_number }}",
+        "customerMemo": "=Total: {{ $json.quantity }} MTS.\\n\\nNote: We will only start production after these points are met without exception.\\n1) The PI must be signed by the buyer\\n2) All the lab dips must be approved\\n3) Please send us the detail of how the rolls or bales should be labeled\\n4) All quantities have a tolerance of +-10% in quantity and weight.\\n\\nFOB USD, SHANGHAI-CHINA",
+        "line": [
+          {
+            "description": "={{ $json.description }}",
+            "amount": "={{ $json.quantity * $json.customer_price }}",
+            "detailType": "SalesItemLineDetail"
+          }
+        ]
+      },
+      "id": "node-qbo-create-estimate",
+      "name": "QBO: Create Estimate",
+      "type": "n8n-nodes-base.quickbooks",
+      "typeVersion": 1,
+      "position": [1780, 200]
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "sheetId": "={{ $env.GOOGLE_SHEET_ID }}",
+        "range": "PROFORMAS!P{{ $('Google Sheets: Find PROFORMAS Row').first().json.row_number }}",
+        "value": "={{ $json.docNumber }}"
+      },
+      "id": "node-gsheet-update",
+      "name": "Google Sheets: Update PI # Cell",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4,
+      "position": [2000, 200]
+    }
+  ],
+  "connections": {
+    "Gmail: Work Pending Intake": {
+      "main": [[{"node": "Filter PO Requests", "type": "main", "index": 0}]]
+    },
+    "Filter PO Requests": {
+      "main": [[{"node": "Azure Document Intelligence: Extract PO", "type": "main", "index": 0}]]
+    },
+    "Azure Document Intelligence: Extract PO": {
+      "main": [[{"node": "Google Sheets: Find PROFORMAS Row", "type": "main", "index": 0}]]
+    },
+    "Google Sheets: Find PROFORMAS Row": {
+      "main": [[{"node": "Validation Engine (10 Gates)", "type": "main", "index": 0}]]
+    },
+    "Validation Engine (10 Gates)": {
+      "main": [[{"node": "Check: Validation Passed?", "type": "main", "index": 0}]]
+    },
+    "Check: Validation Passed?": {
+      "main": [
+        [{"node": "QBO: Create Purchase Order", "type": "main", "index": 0}],
+        [{"node": "Alert: Exception Channel", "type": "main", "index": 0}]
+      ]
+    },
+    "QBO: Create Purchase Order": {
+      "main": [[{"node": "QBO: Create Estimate", "type": "main", "index": 0}]]
+    },
+    "QBO: Create Estimate": {
+      "main": [[{"node": "Google Sheets: Update PI # Cell", "type": "main", "index": 0}]]
+    }
+  }
+}

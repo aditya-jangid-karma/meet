@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mock NexusPayables Environment</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; background: #f4f6f9; }
+        .form-container { background: white; padding: 20px; border-radius: 8px; width: 400px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        .field { margin-bottom: 15px; }
+        label { display: block; font-weight: bold; margin-bottom: 5px; font-size: 14px; }
+        input[type="text"] { width: 100%; padding: 8px; box-sizing: border-box; border: 1px solid #ccc; border-radius: 4px; }
+        button { padding: 10px 15px; cursor: pointer; border: 1px solid #0056b3; background: white; color: #0056b3; border-radius: 4px; margin-top: 5px;}
+        .primary-btn { background: #0056b3; color: white; border: none; font-weight: bold; margin-top: 20px;}
+        
+        /* Mock Modal styling */
+        .modal { display: none; position: fixed; top: 20%; left: 30%; background: white; border: 2px solid #333; padding: 20px; z-index: 1000; box-shadow: 0 5px 15px rgba(0,0,0,0.3); }
+        .modal .close { float: right; cursor: pointer; color: red; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+    <h2>Local Testing - Mock Nexus Form</h2>
+    <p>This page mimics the structure of the real NexusPayables page.</p>
+
+    <div class="form-container">
+        <div class="field">
+            <label>Integration Package</label>
+            <input type="text" value="INTACCT">
+        </div>
+        
+        <div class="field">
+            <label>Property Code</label>
+            <input type="text" value="0000">
+        </div>
+        
+        <div class="field">
+            <label>Property</label>
+            <input type="text" value="000 - PROPERTY NOT FOUND (PNF)">
+        </div>
+        
+        <button id="prop-addr-btn">Property Address</button>
+        <br><br>
+
+        <div class="field">
+            <label>Vendor Code</label>
+            <input type="text" value="" placeholder="Type something here to test saving...">
+        </div>
+        
+        <div class="field">
+            <label>Vendor</label>
+            <input type="text" value="" placeholder="Type something here to test saving...">
+        </div>
+        
+        <button id="vend-addr-btn">Vendor Address</button>
+
+        <hr style="margin: 20px 0;">
+
+        <button class="primary-btn" id="convert-btn">Convert to Invoice</button>
+    </div>
+
+    <!-- Hidden Mock Modal that the extension will scrape -->
+    <div class="modal" id="address-modal">
+        <span class="close" onclick="closeModal()">X</span>
+        <h3>Address Details</h3>
+        <div class="content" id="modal-content">123 Fake Street, City, ST 12345</div>
+    </div>
+
+    <script>
+        // Simple script to mimic the address buttons opening a modal
+        document.getElementById('prop-addr-btn').onclick = function() {
+            document.getElementById('modal-content').innerText = "123 Property Ave, Build City, NY";
+            document.getElementById('address-modal').style.display = 'block';
+        };
+
+        document.getElementById('vend-addr-btn').onclick = function() {
+            document.getElementById('modal-content').innerText = "999 Vendor Road, Supply Town, CA";
+            document.getElementById('address-modal').style.display = 'block';
+        };
+
+        function closeModal() {
+            document.getElementById('address-modal').style.display = 'none';
+        }
+    </script>
+</body>
+</html>

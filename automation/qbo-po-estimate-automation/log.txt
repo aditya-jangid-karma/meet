@@ -1,0 +1,57 @@
+ C:\Users\Meet Patel\Desktop\automation\qbo-po-estimate-automation> python main.py run-sample
+======================================================================
+   QBO PURCHASE ORDER & ESTIMATE AUTOMATION SYSTEM   
+   Aligned with SOP & Automation Plan (Reports 1 & 2) 
+======================================================================
+
+[+] Running pilot processing with SOP Reference Sample:
+    File: C:\Users\Meet Patel\Desktop\automation\qbo-po-estimate-automation\samples\sample_order_7207.json
+
+
+--- EXECUTION REPORT [Run ID: RUN-3C4ED121] ---
+Status:       SUCCESS
+Order #:      7207
+Sheet Cell:   Updated = True
+
+[Validation Gates Breakdown]:
+  [PASS] Gate 1: Supplier Verification: Supplier verified: 'A-TEX INTERNATIONAL CO., LIMITED' matches Sheet 'A-TEX INTERNATIONAL CO., LIMITED'.
+  [PASS] Gate 2: Order Number: Order number confirmed: 7207.
+  [PASS] Gate 3: Item Resolution: Item resolved from master sheet: 'AT-2080-1'.
+  [PASS] Gate 4: Standardized Description: Master standardized description present.
+  [PASS] Gate 5: Quantity Verification: Quantity verified: PDF 22400.0 == Sheet 22400.0.
+  [PASS] Gate 6: Purchase Rate Verification: Purchase rate verified: PDF $1.30 == Sheet $1.30.
+  [PASS] Gate 7: Customer Price & Margin: Customer price valid: $1.85 (Margin: +$0.55/unit).
+  [PASS] Gate 8: Shipping Route: Shipping route complete: From 'SHANGHAI, CHINA' To 'BUENAVENTURA, COLOMBIA' via 'BY SEA'.
+  [PASS] Gate 9: Duplicate Transaction Check: No duplicate transaction found in QuickBooks Online.
+  [PASS] Gate 10: QBO Master Data Resolution: QBO Vendor, Customer, and Item records confirmed.
+
+[QuickBooks Online Records Created]:
+  - Purchase Order #: AT-26209 (ID: MOCK-PO-9001)
+  - Estimate/PI #:    1793 (ID: MOCK-EST-5001)
+
+Result Message: Successfully processed Order #7207. QBO PO: AT-26209, Estimate/PI: 1793. Google Sheet updated: True.
+
+======================================================================
+PS C:\Users\Meet Patel\Desktop\automation\qbo-po-estimate-automation> python tests/run_tests.py
+test_duplicate_fails (__main__.TestValidationGates.test_duplicate_fails) ... ok
+test_negative_margin_fails (__main__.TestValidationGates.test_negative_margin_fails) ... ok
+test_order_7207_passes_all_gates (__main__.TestValidationGates.test_order_7207_passes_all_gates) ... ok
+test_pipeline_end_to_end (__main__.TestValidationGates.test_pipeline_end_to_end) ... ok
+test_quantity_mismatch_fails (__main__.TestValidationGates.test_quantity_mismatch_fails) ... ok
+test_rate_mismatch_fails (__main__.TestValidationGates.test_rate_mismatch_fails) ... ok
+test_supplier_mismatch_fails (__main__.TestValidationGates.test_supplier_mismatch_fails) ... ok
+
+----------------------------------------------------------------------
+Ran 7 tests in 0.062s
+
+OK
+PS C:\Users\Meet Patel\Desktop\automation\qbo-po-estimate-automation> python main.py history
+======================================================================
+   QBO PURCHASE ORDER & ESTIMATE AUTOMATION SYSTEM   
+   Aligned with SOP & Automation Plan (Reports 1 & 2) 
+======================================================================
+
+[Latest Automation Control Log Entries (3)]:
+  [2026-10-07T10:24:13.616092] Run: RUN-3C4ED121 | Order #7207 | Status: SUCCESS | Estimate #: 1793
+  [2026-10-07T10:05:50.609292] Run: RUN-44A70AE8 | Order #7207 | Status: SUCCESS | Estimate #: 1793
+  [2026-10-07T10:05:15.102950] Run: RUN-089A13DA | Order #7207 | Status: SUCCESS | Estimate #: 1793

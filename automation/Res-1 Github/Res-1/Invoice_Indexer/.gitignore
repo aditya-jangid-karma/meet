@@ -1,0 +1,45 @@
+# CORRECTED 2026-08-19. The earlier header claimed this project was LOCAL-ONLY
+# with no git repository. That was WRONG: a git repository DOES exist and covers
+# this project. These rules are LIVE - they decide what actually gets committed.
+#
+# Separate standing rule: Claude must not run or suggest ANY git command.
+
+# Secrets - never commit these.
+.env
+automation/.bottomline_session.json
+
+# The virtual environment and the browser Playwright downloads.
+.venv/
+.browsers/
+
+# Run logs may contain vendor names and invoice numbers.
+logs/
+
+# Recorded field captures may reveal client system internals.
+# The wildcard also covers selectors_recorded.run1-15fields.json, which must
+# stay ON DISK (it is the evidence behind the field map) but must never be
+# committed. Note: selectors.json - the hand-built map - is NOT ignored.
+automation/selectors_recorded*.json
+
+# Client data. The work list holds real vendor names and invoice numbers, and
+# the screenshots are pictures of a live client system.
+input/*.xlsx
+notes/**/*.png
+
+# Vendor/Property master data - real vendor names, addresses, ERP IDs and the
+# whole property list. The source workbook AND everything flattened out of it
+# (masters/vendors.csv, the alias file, etc.) are CLIENT DATA. Never commit.
+Vendor&PropertyMaster.xlsx
+masters/
+
+# Invoice PDFs the reader (invoice_reader.py) ingests. They live in a subfolder
+# (input/pdfs/), which the root's `**/input/*.pdf` does NOT match, so guard them
+# here. Every PDF is a client document -- never commit one.
+input/**/*.pdf
+
+# Claude Code's own folder - settings, skills, local permissions.
+.claude/
+
+# Python noise
+__pycache__/
+*.pyc
