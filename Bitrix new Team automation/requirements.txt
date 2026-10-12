@@ -1,6 +1,0 @@
-﻿pandas
-openpyxl
-requests
-urllib3
-excel2img
-pywin32
